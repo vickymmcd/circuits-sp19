@@ -68,6 +68,7 @@ for val in Vin:
     ion1k.append((frac2*I1K[i])/(1-frac2))
     ion100.append((frac3*I100[i])/(1-frac3))
 
+print(ion10k)
 ion10k_val = np.mean(ion10k)
 
 

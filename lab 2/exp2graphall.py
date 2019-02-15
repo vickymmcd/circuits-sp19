@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from exp2transistorv import ion10k_val
 
-iss = (1*10**-15)
+iss = (1.0*10**-15)
 ut = .025
 Vin = open('exp 2 10k resistor/Vin.txt', 'r').read().split()
 I10K = open('exp 2 10k resistor/I.txt', 'r').read().split()
@@ -50,23 +50,23 @@ for x in I100:
     I100[i]= val
     i = i+1
 
-
-title = "Semilog Plot of Voltage Vs Current"
-xLabel = "Voltage In (V)"
-yLabel = "Current Out (A)"
-
-
-Data = plt.semilogy(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
-Data = plt.semilogy(Vin, I1K, 'ro', markersize=3, label="1100 Ohm Resistor")
-Data = plt.semilogy(Vin, I100, 'go', markersize=3, label="110 Ohm Resistor")
-Data = plt.semilogy(Vin, theoretical10K, 'bx', markersize=3, label="10K Ohm Resistor")
-#Data = plt.semilogy(Vin, theoretical1K, 'rx', markersize=3, label="1100 Ohm Resistor")
-#Data = plt.semilogy(Vin, theoretical100, 'gx', markersize=3, label="110 Ohm Resistor")
+if __name__ == '__main__':
+    title = "Semilog Plot of Voltage Vs Current"
+    xLabel = "Voltage In (V)"
+    yLabel = "Current Out (A)"
 
 
-plt.legend()
-plt.xlabel(xLabel)
-plt.ylabel(yLabel)
-plt.title(title)
-plt.grid(True)
-plt.show()
+    Data = plt.semilogy(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
+    Data = plt.semilogy(Vin, I1K, 'ro', markersize=3, label="1100 Ohm Resistor")
+    Data = plt.semilogy(Vin, I100, 'go', markersize=3, label="110 Ohm Resistor")
+    Data = plt.semilogy(Vin, theoretical10K, 'bx', markersize=3, label="10K Ohm Resistor")
+    #Data = plt.semilogy(Vin, theoretical1K, 'rx', markersize=3, label="1100 Ohm Resistor")
+    #Data = plt.semilogy(Vin, theoretical100, 'gx', markersize=3, label="110 Ohm Resistor")
+
+
+    plt.legend()
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
+    plt.title(title)
+    plt.grid(True)
+    plt.show()
