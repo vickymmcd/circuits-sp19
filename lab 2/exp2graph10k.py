@@ -43,7 +43,7 @@ Vin = np.array(Vin)
 
 
 Data = plt.plot(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
-Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(slope)+"x + " +str(intercept))
+Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(round(slope,5))+"x + " +str(round(intercept,7 )))
 
 
 plt.legend()
