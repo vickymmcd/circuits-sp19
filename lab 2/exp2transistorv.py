@@ -59,6 +59,8 @@ for x in I100:
     I100[i]= val
     i = i+1
 
+print(len(Vt10K))
+print(len(Vin))
 i = 0
 for val in Vin:
     frac = val / Vt10K[i]
@@ -67,9 +69,12 @@ for val in Vin:
     ion10k.append((frac*I10K[i])/(1-frac))
     ion1k.append((frac2*I1K[i])/(1-frac2))
     ion100.append((frac3*I100[i])/(1-frac3))
+    i = i+1
 
 ion10k_val = np.mean(ion10k)
+print(ion10k_val)
 ion1k_val = np.mean(ion1k)
+print(ion1k_val)
 
 
 if __name__ == '__main__':

@@ -4,7 +4,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from exp2graphall import von10k
 from scipy import stats
 
 
@@ -22,31 +21,29 @@ for x in Vin:
     i = i+1
 
 i = 0
-found = False
 for x in I10K:
     val = float(x)
     I10K[i]= val
-    if val > .000005 and not found:
-        print(Vin[i])
-        von10k = Vin[i]
-        found = True
-    if Vin[i] > von10k:
+    if Vin[i] > .5:
         linear_i.append(val)
         linear_v.append(Vin[i])
     i = i+1
+
+slope, intercept, r_value, p_value, std_err = stats.linregress(linear_v, linear_i)
+linear_v = np.array(linear_v)
+
+von10k = (-1*intercept)/slope
 
 
 title = "Plot of Voltage Vs Current"
 xLabel = "Voltage In (V)"
 yLabel = "Current Out (A)"
 linear_v = np.array(linear_v)
-linear_i = np.array(linear_i)
-intercept = von10k
-slope = 1.0/10000.0
+Vin = np.array(Vin)
 
 
 Data = plt.plot(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
-Data = plt.plot(linear_v, slope*(linear_v-von10k), 'r', label="fitted line")
+Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(slope)+"x + " +str(intercept))
 
 
 plt.legend()
