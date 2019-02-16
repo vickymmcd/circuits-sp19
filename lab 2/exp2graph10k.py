@@ -33,22 +33,24 @@ slope, intercept, r_value, p_value, std_err = stats.linregress(linear_v, linear_
 linear_v = np.array(linear_v)
 
 von10k = (-1*intercept)/slope
+print(von10k)
 
 
-title = "Plot of Voltage Vs Current"
-xLabel = "Voltage In (V)"
-yLabel = "Current Out (A)"
-linear_v = np.array(linear_v)
-Vin = np.array(Vin)
+if __name__ == '__main__':
+    title = "Plot of Voltage Vs Current"
+    xLabel = "Voltage In (V)"
+    yLabel = "Current Out (A)"
+    linear_v = np.array(linear_v)
+    Vin = np.array(Vin)
 
 
-Data = plt.plot(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
-Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(slope)+"x + " +str(intercept))
+    Data = plt.plot(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
+    Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(slope)+"x + " +str(intercept))
 
 
-plt.legend()
-plt.xlabel(xLabel)
-plt.ylabel(yLabel)
-plt.title(title)
-plt.grid(True)
-plt.show()
+    plt.legend()
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
+    plt.title(title)
+    plt.grid(True)
+    plt.show()

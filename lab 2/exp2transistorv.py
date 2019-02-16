@@ -3,7 +3,9 @@
 
 
 import numpy as np
+from exp2graph10k import von10k
 import matplotlib.pyplot as plt
+from scipy import stats
 
 
 Vin = open('exp 2 10k resistor/Vin.txt', 'r').read().split()
@@ -16,6 +18,8 @@ I100 = open('exp 2 110 resistor/I.txt', 'r').read().split()
 ion10k = []
 ion1k = []
 ion100 = []
+linear_vin = []
+linear_vt = []
 
 i = 0
 for x in Vin:
@@ -26,6 +30,9 @@ for x in Vin:
 i = 0
 for x in Vt10K:
     val = float(x)
+    if Vin[i] < von10k:
+        linear_vin.append(Vin[i])
+        linear_vt.append(val)
     Vt10K[i]= val
     i = i+1
 
@@ -59,22 +66,8 @@ for x in I100:
     I100[i]= val
     i = i+1
 
-print(len(Vt10K))
-print(len(Vin))
-i = 0
-for val in Vin:
-    frac = val / Vt10K[i]
-    frac2 = val / Vt1K[i]
-    frac3 = val / Vt100[i]
-    ion10k.append((frac*I10K[i])/(1-frac))
-    ion1k.append((frac2*I1K[i])/(1-frac2))
-    ion100.append((frac3*I100[i])/(1-frac3))
-    i = i+1
-
-ion10k_val = np.mean(ion10k)
-print(ion10k_val)
-ion1k_val = np.mean(ion1k)
-print(ion1k_val)
+slope, intercept, r_value, p_value, std_err = stats.linregress(linear_vin, linear_vt)
+linear_vin = np.array(linear_vin)
 
 
 if __name__ == '__main__':
@@ -86,6 +79,7 @@ if __name__ == '__main__':
     Data = plt.plot(Vin, Vt10K, 'bo', markersize=3, label="10K Ohm Resistor")
     Data = plt.plot(Vin, Vt1K, 'ro', markersize=3, label="1100 Ohm Resistor")
     Data = plt.plot(Vin, Vt100, 'go', markersize=3, label="110 Ohm Resistor")
+    Data = plt.plot(linear_vin, (slope*linear_vin)+intercept, 'r', label="fitted line: y="+str(round(slope, 5))+"x + " +str(round(intercept,5)))
 
     plt.legend()
     plt.xlabel(xLabel)
