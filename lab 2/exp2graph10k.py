@@ -33,7 +33,6 @@ slope, intercept, r_value, p_value, std_err = stats.linregress(linear_v, linear_
 linear_v = np.array(linear_v)
 
 von10k = (-1*intercept)/slope
-print(von10k)
 
 
 if __name__ == '__main__':
@@ -44,8 +43,8 @@ if __name__ == '__main__':
     Vin = np.array(Vin)
 
 
-Data = plt.plot(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
-Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(round(slope,5))+"x + " +str(round(intercept,7 )))
+    Data = plt.plot(Vin, I10K, 'bo', markersize=3, label="10K Ohm Resistor")
+    Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(round(slope,5))+"x + " +str(round(intercept,7 )))
 
 
     plt.legend()

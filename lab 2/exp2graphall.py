@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 from exp2graph10k import von10k
 from scipy import stats
 
-iss = (1.0*10**-15)
-ut = .025
 Vin = open('exp 2 10k resistor/Vin.txt', 'r').read().split()
 I10K = open('exp 2 10k resistor/I.txt', 'r').read().split()
 I1K = open('exp 2 1100 resistor/I.txt', 'r').read().split()

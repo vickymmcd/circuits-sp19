@@ -37,20 +37,20 @@ linear_v = np.array(linear_v)
 
 von100 = (-1*intercept)/slope
 
+if __name__ == '__main__':
+    title = "Plot of Voltage Vs Current"
+    xLabel = "Voltage In (V)"
+    yLabel = "Current Out (A)"
+    linear_v = np.array(linear_v)
+    Vin = np.array(Vin)
 
-title = "Plot of Voltage Vs Current"
-xLabel = "Voltage In (V)"
-yLabel = "Current Out (A)"
-linear_v = np.array(linear_v)
-Vin = np.array(Vin)
-
-Data = plt.plot(Vin, I100, 'bo', markersize=3, label="110 Ohm Resistor")
-Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))
+    Data = plt.plot(Vin, I100, 'bo', markersize=3, label="110 Ohm Resistor")
+    Data = plt.plot(Vin, (slope*Vin)+intercept, 'r', label="fitted line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))
 
 
-plt.legend()
-plt.xlabel(xLabel)
-plt.ylabel(yLabel)
-plt.title(title)
-plt.grid(True)
-plt.show()
+    plt.legend()
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
+    plt.title(title)
+    plt.grid(True)
+    plt.show()
