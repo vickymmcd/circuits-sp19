@@ -5,12 +5,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+from ExpConstantCalcs import U_t, I_s
 
 Vb = open('exp3-100/Vin.txt', 'r').read().split()
 Vout = open('exp3-100/Vout.txt', 'r').read().split()
 beta = 100
-Ut = .033
-Is = 1*10**-13
+Ut = U_t #.033
+Is = I_s #1*10**-13
 R = 100
 alpha = float(beta/(1.0+beta))
 Ion = (alpha*Ut)/R
