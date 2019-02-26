@@ -113,9 +113,9 @@ xLabel = "Ib (Amps)"
 Data1 = plt.loglog(I_b_100, R_b100, 'ro', markersize=3, label="R = 100 Ohm")
 Data2 = plt.loglog(I_b_1K, R_b1K, 'bo', markersize=3, label="R = 1K Ohm")
 Data3 = plt.loglog(I_b_10K, R_b10K, 'go', markersize=3, label="R = 10K Ohm")
-Data4 = plt.loglog(I_b_100, Theo_Rb_100, 'c^', markersize=4, label="R = 100 Ohm Theoretical")
-Data5 = plt.loglog(I_b_1K, Theo_Rb_1K, 'm^', markersize=4, label="R = 1K Ohm Theoretical")
-Data6 = plt.loglog(I_b_10K, Theo_Rb_10K, 'k^', markersize=4, label="R = 10K Ohm Theoretical")
+Data4 = plt.loglog(I_b_100, Theo_Rb_100, 'c--', markersize=4, label="R = 100 Ohm Theoretical")
+Data5 = plt.loglog(I_b_1K, Theo_Rb_1K, 'm--', markersize=4, label="R = 1K Ohm Theoretical")
+Data6 = plt.loglog(I_b_10K, Theo_Rb_10K, 'k--', markersize=4, label="R = 10K Ohm Theoretical")
 
 # More plot settings
 plt.legend()
