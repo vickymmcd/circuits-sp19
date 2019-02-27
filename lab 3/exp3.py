@@ -5,9 +5,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+from ExpConstantCalcs import U_t, I_s
 
-Vb = open('exp3-100/Vb.txt', 'r').read().split()
+Vb = open('exp3-100/Vin.txt', 'r').read().split()
 Vout = open('exp3-100/Vout.txt', 'r').read().split()
+beta = 100
+Ut = U_t #.033
+Is = I_s #1*10**-13
+R = 100
+alpha = float(beta/(1.0+beta))
+Ion = (alpha*Ut)/R
+Von = Ut*np.log(Ion/Is)
 
 
 i = 0
@@ -23,7 +31,10 @@ for x in Vout:
     i = i+1
 
 slope, intercept, r_value, p_value, std_err = stats.linregress(Vb, Vout)
+# slope, intercept, r_value, p_value, std_err = stats.linregress(Vb, Vout)
 Vb = np.array(Vb)
+slope = 1
+intercept = -1*Von
 
 
 
