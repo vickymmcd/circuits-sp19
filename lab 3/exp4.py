@@ -66,11 +66,11 @@ if __name__ == '__main__':
     Data = plt.plot(Vb, Vout, 'bo', markersize=3, label="300 Ohm Resistor")
     Data = plt.plot(Vb, Vout2, 'ro', markersize=3, label="400 Ohm Resistor")
     Data = plt.plot(Vb, Vout3, 'go', markersize=3, label="500 Ohm Resistor")
-    Data = plt.plot(downwardVin, (slope*downwardVin)+intercept, 'b', markersize=3, label="300 Ohm Resistor")
-    Data = plt.plot(downwardVin2, (slope2*downwardVin2)+intercept2, 'r', markersize=3, label="400 Ohm Resistor")
-    Data = plt.plot(downwardVin3, (slope3*downwardVin3)+intercept3, 'g', markersize=3, label="500 Ohm Resistor")
+    Data = plt.plot(downwardVin, (slope*downwardVin)+intercept, 'b', markersize=3, label="300 Ohm Resistor Theoretical: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))
+    Data = plt.plot(downwardVin2, (slope2*downwardVin2)+intercept2, 'r', markersize=3, label="400 Ohm Resistor Theoretical: y="+str(round(slope2,5))+"x + " +str(round(intercept2,5)))
+    Data = plt.plot(downwardVin3, (slope3*downwardVin3)+intercept3, 'g', markersize=3, label="500 Ohm Resistor Theoretical: y="+str(round(slope3,5))+"x + " +str(round(intercept3,5)))
 
-    Data = plt.plot(Vb, (1*Vb)+(-1*Von), 'k', label="fitted line: y="+str(round(1,5))+"x + " +str(round((-1*Von),5)))
+    Data = plt.plot(Vb, (1*Vb)+(-1*Von), 'k', label="theoretical: y="+str(round(1,5))+"x + " +str(round((-1*Von),5)))
 
 
     plt.legend()
