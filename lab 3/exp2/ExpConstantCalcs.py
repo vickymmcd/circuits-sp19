@@ -1,6 +1,7 @@
 
 from scipy import stats
 import math
+import matplotlib.pyplot as plt
 
 # Exp 1 Data
 Exp1_Ib = open('../exp1/Ib.txt', 'r').read().split()
@@ -19,12 +20,6 @@ for x in Exp1_Ib:
     I_cVals.append((-1*I_eval) - I_bval)
 
     i = i+1
-
-
-slope, intercept, r_value, p_value, std_err = stats.linregress(V_bVals,I_cVals)
-
-U_t = (1/(slope*1000))
-I_s = math.exp(intercept*1000)
 
 
 
