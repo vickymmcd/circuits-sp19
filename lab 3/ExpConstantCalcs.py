@@ -26,6 +26,7 @@ for x in Exp1_Ib:
         linear_i.append(np.log(float((-1*I_eval) - I_bval)))
     V_bVals.append(V_bval)
     I_cVals.append((-1*I_eval) - I_bval)
+    Exp1_Ib[i] = I_bval
     #beta_vals.append(((-1*I_eval) - I_bval)/I_bval)
     i = i+1
 
@@ -44,14 +45,15 @@ for x in Exp1_Ib:
 beta = np.mean(beta_vals)
 
 
-
 if __name__ == '__main__':
-    Data = plt.plot(V_bVals, beta_vals, 'bo', markersize=3, label="300 Ohm Resistor")
+    Data = plt.semilogy(V_bVals, I_cVals, 'bo', markersize=3, label="Ic values")
+    Data = plt.semilogy(V_bVals, Exp1_Ib, 'ro', markersize=3, label="Ib values")
+
 
     print(U_t)
     print(I_s)
-    print(beta_vals)
     print(beta)
+    plt.legend()
     plt.show()
 
 
