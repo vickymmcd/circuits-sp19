@@ -24,13 +24,13 @@ for x in Exp1_Ib:
 
 for y in range(1,len(Exp1_Vb)):
     incv=Exp1_Vb[y]-Exp1_Vb[y-1]
-    print (Exp1_Ib[y])
-    print (Exp1_Ib[y-1])
-    #inci=Exp1_Ib[y]-Exp1_Ib[y-1]
+    #print (Exp1_Ib[y])
+    #print (Exp1_Ib[y-1])
+    inci=Exp1_Ib[y]-Exp1_Ib[y-1]
 
     #print (incv)
     #print (inci)
-    #rb.append(incv/inci)
+    rb.append(incv/inci)
 
 if __name__ == '__main__':
 
