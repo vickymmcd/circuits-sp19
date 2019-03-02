@@ -4,7 +4,6 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 # Exp 1 Data
 Exp1_Ib = open('exp1/Ib.txt', 'r').read().split()
 Exp1_Ie = open('exp1/Ie.txt', 'r').read().split()

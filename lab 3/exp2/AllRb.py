@@ -6,6 +6,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
+from Calcs import U_t, I_s, alpha, beta
 
 # Importing Data
 #100 Ohm
@@ -34,7 +35,6 @@ Theo_Rb_100 = []
 Theo_Rb_1K = []
 Theo_Rb_10K = []
 
-B = 100
 #Calc I_c
 i = 0
 for x in I_b_100:
@@ -44,7 +44,7 @@ for x in I_b_100:
     I_e_100[i] = I_eval
     V_b_100[i] = float(V_b_100[i])
     I_c_100.append((-1*I_eval) - I_bval)
-    Theo_Rb_100.append((B+1)*100 + (0.34/I_bval))
+    Theo_Rb_100.append((beta+1)*100 + (U_t/I_bval))
 
     if(i != 0):
         yc = float(V_b_100[i])-float(V_b_100[i-1])
@@ -62,7 +62,7 @@ for x in I_b_1K:
     I_e_1K[i] = I_eval
     V_b_1K[i] = float(V_b_1K[i])
     I_c_1K.append((-1*I_eval) - I_bval)
-    Theo_Rb_1K.append((B+1)*1000 + (0.34/I_bval))
+    Theo_Rb_1K.append((beta+1)*1000 + (U_t/I_bval))
 
     if(i != 0):
         yc = float(V_b_1K[i])-float(V_b_1K[i-1])
@@ -80,7 +80,7 @@ for x in I_b_10K:
     I_e_10K[i] = I_eval
     V_b_10K[i] = float(V_b_10K[i])
     I_c_10K.append((-1*I_eval) - I_bval)
-    Theo_Rb_10K.append((B+1)*10000 + (0.34/I_bval))
+    Theo_Rb_10K.append((beta+1)*10000 + (U_t/I_bval))
 
     if(i != 0):
         yc = float(V_b_10K[i])-float(V_b_10K[i-1])

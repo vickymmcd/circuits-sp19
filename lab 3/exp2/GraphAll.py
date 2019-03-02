@@ -6,6 +6,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
+from Calcs import U_t, I_s, alpha, beta
 
 # Importing Data
 #100 Ohm
@@ -82,13 +83,8 @@ yLabel = "Ic (Amps)"
 
 Exp1_Ic_Theo = []
 
-slope, intercept, r_value, p_value, std_err = stats.linregress(Exp1_Vb,Exp1_Ic)
-U_T = (1/slope)
-
-
-
 for x in Exp1_Vb:
-    Exp1_Ic_Theo.append(1e-12*math.exp(x/U_T*1000))
+    Exp1_Ic_Theo.append(I_s*math.exp(x/U_t))
 
 
 # Plotting Data
@@ -96,8 +92,8 @@ for x in Exp1_Vb:
 Data1 = plt.semilogy(V_b_100, I_c_100, 'ro', markersize=3, label="R = 100 Ohm")
 Data2 = plt.semilogy(V_b_1K, I_c_1K, 'bo', markersize=3, label="R = 1K Ohm")
 Data3 = plt.semilogy(V_b_10K, I_c_10K, 'go', markersize=3, label="R = 10K Ohm")
-Data4 = plt.semilogy(Exp1_Vb, Exp1_Ic , 'k-', markersize=3, label="Collector Characteristic w/o Resistor")
-Data5 = plt.semilogy(Exp1_Vb, Exp1_Ic_Theo , 'p-', markersize=3, label="Theoretical Collector Characteristic w/o Resistor")
+Data4 = plt.semilogy(Exp1_Vb, Exp1_Ic_Theo , 'p-', markersize=3, label="Theoretical Collector Characteristic w/o Resistor")
+Data5 = plt.semilogy(Exp1_Vb, Exp1_Ic , 'k-', markersize=3, label="Collector Characteristic w/o Resistor")
 
 # More plot settings
 plt.legend()

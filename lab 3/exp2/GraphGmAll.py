@@ -6,6 +6,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
+from Calcs import U_t, I_s
 
 # Importing Data
 #100 Ohm
@@ -34,8 +35,7 @@ Theo_Gm_100 = []
 Theo_Gm_1K = []
 Theo_Gm_10K = []
 
-B = 998
-U_t = 0.34
+B = 100
 #Calc I_c
 i = 0
 for x in I_b_100:
@@ -100,7 +100,7 @@ for x in I_b_10K:
         G_m10K.append(0)
     i = i+1
 
-    
+
 
 # Setting up plot
 title = "Incremental Transconductance Gain vs Collector Current"
@@ -123,9 +123,9 @@ xLabel = "Ic (Amps)"
 Data1 = plt.loglog(I_c_100, G_m100, 'ro', markersize=3, label="R = 100 Ohm")
 Data2 = plt.loglog(I_c_1K, G_m1K, 'bo', markersize=3, label="R = 1K Ohm")
 Data3 = plt.loglog(I_c_10K, G_m10K, 'go', markersize=3, label="R = 10K Ohm")
-Data4 = plt.loglog(I_c_100, Theo_Gm_100, 'c^', markersize=4, label="R = 100 Ohm Theoretical")
-Data5 = plt.loglog(I_c_1K, Theo_Gm_1K, 'm^', markersize=4, label="R = 1K Ohm Theoretical")
-Data6 = plt.loglog(I_c_10K, Theo_Gm_10K, 'k^', markersize=4, label="R = 10K Ohm Theoretical")
+Data4 = plt.loglog(I_c_100, Theo_Gm_100, 'c--', markersize=4, label="R = 100 Ohm Theoretical")
+Data5 = plt.loglog(I_c_1K, Theo_Gm_1K, 'm--', markersize=4, label="R = 1K Ohm Theoretical")
+Data6 = plt.loglog(I_c_10K, Theo_Gm_10K, 'k--', markersize=4, label="R = 10K Ohm Theoretical")
 
 # More plot settings
 plt.legend()

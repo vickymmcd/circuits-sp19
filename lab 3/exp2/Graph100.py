@@ -6,6 +6,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
+from Calcs import U_t, I_s, alpha
 
 # Importing Data
 
@@ -30,13 +31,8 @@ for x in I_b_100:
 R = 100
 i = 0
 for x in I_c_100:
-    U_t = 0.34;
     I_eval = -1*float(I_e_100[i])
-    V_bval = float(V_b_100[i])
-    gm = x/U_t
-    re = U_t/I_eval
-    slope = gm/(1+(R/re))
-    Theo_100.append(slope* V_bval)
+    Theo_100.append(I_eval* alpha)
     i = i+1
 
 # Ut = []
@@ -68,8 +64,8 @@ yLabel = "Ic (Amps)"
 
 # Plotting Data
 
-Data1 = plt.plot(V_b_100, I_c_100, 'ro', markersize=3, label="R = 100 Ohm")
-Data2 = plt.plot(V_b_100, Theo_100, 'bo', markersize=3, label="Theoretical Fit")
+Data1 = plt.plot(V_b_100, I_c_100, 'bo', markersize=3, label="R = 100 Ohm")
+Data2 = plt.plot(V_b_100, Theo_100, 'k--', markersize=3, label="Theoretical Fit")
 # Data3 = plt.semilogy(V_b_100, I_c_100, 'go', markersize=3, label="R = 100 Ohm")
 # Data4 = plt.semilogy(Exp1_Vb, Exp1_Ic , 'k-', markersize=3, label="Collector Characteristic w/o Resistor")
 # Data5 = plt.semilogy(Exp1_Vb, Exp1_Ic_Theo , 'p-', markersize=3, label="Theoretical Collector Characteristic w/o Resistor")
