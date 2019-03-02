@@ -12,6 +12,7 @@ Exp1_Ic_Theo = []
 Exp1_Ic = []
 Exp1_Ib_Theo = []
 rb=[]
+exp1_ib2 = []
 
 for x in Exp1_Ib:
     I_bval = float(x)
@@ -30,14 +31,16 @@ for y in range(1,len(Exp1_Vb)):
 
     #print (incv)
     #print (inci)
-    rb.append(incv/inci)
+    if inci != 0:
+        rb.append(incv/inci)
+        exp1_ib2.append(Exp1_Ib[y])
 
 if __name__ == '__main__':
 
    title = "Rb versus Ib"
    xLabel = "Incremental Base Resistance (Ohms)"
    yLabel = "Base Current (A)"
-   Data = plt.loglog(rb, Exp1_Ib , 'k-', markersize=3)
+   Data = plt.loglog(rb, exp1_ib2 , 'ko', markersize=3)
    plt.legend()
    plt.xlabel(xLabel)
    plt.ylabel(yLabel)
