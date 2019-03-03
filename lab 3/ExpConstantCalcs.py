@@ -45,9 +45,9 @@ beta = np.mean(beta_vals)
 
 
 if __name__ == '__main__':
-    Data = plt.semilogy(V_bVals, I_cVals, 'bo', markersize=3, label="Ic values")
-    Data = plt.semilogy(V_bVals, Exp1_Ib, 'ro', markersize=3, label="Ib values")
-
+    #Data = plt.semilogy(V_bVals, I_cVals, 'bo', markersize=3, label="Ic values")
+    #Data = plt.semilogy(V_bVals, Exp1_Ib, 'ro', markersize=3, label="Ib values")
+    Data = plt.semilogx(Exp1_Ib, beta_vals, 'ro', markersize=3)
 
     print(U_t)
     print(I_s)

@@ -2,6 +2,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 from scipy import stats
+from consts import beta_vals
 import matplotlib.ticker as plticker
 
 Exp1_Ib = open('../exp1/Ib.txt', 'r').read().split()
@@ -30,9 +31,10 @@ if __name__ == '__main__':
 
    plt.figure(0)
    title = "Current Gain"
-   xLabel = "Collector Current (A)"
-   yLabel = "Base Current (A)"
-   Data = plt.semilogx( Exp1_Ib,beta, 'k-', markersize=3)
+   xLabel = "Base Current (A)"
+   yLabel = "Current Gain"
+   Data = plt.semilogx( Exp1_Ib,beta, 'ko', markersize=3, label="beta = Ic/Ib")
+   Data = plt.semilogx( Exp1_Ib[:-3],beta_vals[:-3], 'ro', markersize=3, label="beta = Is/Ib * e^(Vb/Ut)")
    plt.legend()
    plt.xlabel(xLabel)
    plt.ylabel(yLabel)
