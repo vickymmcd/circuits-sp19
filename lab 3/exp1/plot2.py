@@ -11,7 +11,7 @@ i = 0
 Exp1_Ic_Theo = []
 Exp1_Ic = []
 Exp1_Ib_Theo = []
-
+beta=[]
 for x in Exp1_Ib:
     I_bval = float(x)
     I_eval = float(Exp1_Ie[i])
@@ -19,9 +19,12 @@ for x in Exp1_Ib:
     Exp1_Ie[i] = I_eval
     Exp1_Vb[i] = float(Exp1_Vb[i])
     Exp1_Ic.append((-1*I_eval) - I_bval)
-    print("appending")
+    #print("appending")
     i = i+1
+for h in range(0,len(Exp1_Ib)):
+    beta.append(Exp1_Ic[h]/Exp1_Ib[h])
 
+print(beta)
 if __name__ == '__main__':
 
 
@@ -29,7 +32,7 @@ if __name__ == '__main__':
    title = "Current Gain"
    xLabel = "Collector Current (A)"
    yLabel = "Base Current (A)"
-   Data = plt.semilogy(Exp1_Ic, Exp1_Ib , 'k-', markersize=3)
+   Data = plt.semilogx( Exp1_Ib,beta, 'k-', markersize=3)
    plt.legend()
    plt.xlabel(xLabel)
    plt.ylabel(yLabel)
