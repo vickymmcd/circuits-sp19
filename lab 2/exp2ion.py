@@ -28,8 +28,8 @@ if __name__ == '__main__':
     yLabel = "Ion (Amps)"
 
 
-    Data = plt.plot(xs, ys, 'bx', markersize=8, label="Experimental")
-    Data = plt.plot(xs, ions, 'ro', markersize=5, label="Theoretical")
+    Data = plt.loglog(xs, ys, 'bx', markersize=8, label="Experimental")
+    Data = plt.loglog(xs, ions, 'ro', markersize=5, label="Theoretical")
 
     plt.legend()
     plt.xlabel(xLabel)

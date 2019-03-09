@@ -24,8 +24,8 @@ if __name__ == '__main__':
     yLabel = "Von (Volts)"
 
 
-    Data = plt.plot(xs, ys, 'bx', markersize=8, label="Experimental")
-    Data = plt.plot(xs, vons, 'ro', markersize=5, label="Theoretical")
+    Data = plt.semilogx(xs, ys, 'bx', markersize=8, label="Experimental")
+    Data = plt.semilogx(xs, vons, 'ro', markersize=5, label="Theoretical")
 
     plt.legend()
     plt.xlabel(xLabel)
