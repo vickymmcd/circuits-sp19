@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Exp 1 Data
-Exp1_Ib = open('Ib.txt', 'r').read().split()
-Exp1_Ie = open('Ie.txt', 'r').read().split()
-Exp1_Vb = open('Vb.txt', 'r').read().split()
+Exp1_Ib = open('two/Ib.txt', 'r').read().split()
+Exp1_Ie = open('two/Ie.txt', 'r').read().split()
+Exp1_Vb = open('two/Vb.txt', 'r').read().split()
 linear_v = []
 linear_i = []
 beta_vals = []
@@ -42,6 +42,7 @@ for x in Exp1_Ib:
     i+=1
 
 beta2 = np.mean(beta_vals)
+beta2 = beta_vals
 
 
 if __name__ == '__main__':

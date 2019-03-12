@@ -7,10 +7,10 @@ from one.trans1 import I_s1, beta1
 from two.trans2 import I_s2, beta2
 from three.trans3 import I_s3, beta3
 from four.trans4 import I_s4, beta4
-Exp1_Ib = open('/exp1/one/Ib.txt', 'r').read().split()
-Exp2_Ib = open('/exp1/two/Ib.txt', 'r').read().split()
-Exp3_Ib = open('/exp1/three/Ib.txt', 'r').read().split()
-Exp4_Ib = open('/exp1/four/Ib.txt', 'r').read().split()
+Exp1_Ib = open('one/Ib.txt', 'r').read().split()
+Exp2_Ib = open('two/Ib.txt', 'r').read().split()
+Exp3_Ib = open('three/Ib.txt', 'r').read().split()
+Exp4_Ib = open('four/Ib.txt', 'r').read().split()
 
 
 if __name__ == '__main__':
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     Data = plt.semilogy(beta1, Exp1_Ib , 'bo', markersize=3, label="Q1")
     Data = plt.semilogy(beta2, Exp2_Ib , 'ro', markersize=3, label="Q2")
     Data = plt.semilogy(beta3, Exp3_Ib , 'go', markersize=3, label="Q3")
-    Data = plt.semilogy(beta4, Exp4_Ib , 'blo', markersize=3, label="Q4")
+    Data = plt.semilogy(beta4, Exp4_Ib , 'b*', markersize=3, label="Q4")
 
     plt.legend()
     plt.xlabel(xLabel)
