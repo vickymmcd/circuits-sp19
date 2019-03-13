@@ -13,7 +13,7 @@ linear_i = []
 beta_vals = []
 
 V_bVals = []
-I_cVals = []
+I_cVals2 = []
 
 i = 0
 for x in Exp1_Ib:
@@ -24,7 +24,7 @@ for x in Exp1_Ib:
         linear_v.append(V_bval)
         linear_i.append(np.log(float((-1*I_eval) - I_bval)))
     V_bVals.append(V_bval)
-    I_cVals.append((-1*I_eval) - I_bval)
+    I_cVals2.append((-1*I_eval) - I_bval)
     Exp1_Ib[i] = I_bval
     #beta_vals.append(((-1*I_eval) - I_bval)/I_bval)
     i = i+1
