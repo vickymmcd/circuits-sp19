@@ -4,8 +4,8 @@ from scipy import stats
 
 Iy = open('exp3/2500k-source/Iy.txt', 'r').read().split()
 Iz1 = open('exp3/2500k-source/Iz.txt', 'r').read().split()
-#Iz2 = open('exp32/ix2-source/negative/Iz.txt', 'r').read().split()
-#Iz3 = open('exp32/ix3-source/negative/Iz.txt', 'r').read().split()
+Iz2 = open('exp3/250k-source/Iz.txt', 'r').read().split()
+Iz3 = open('exp3/25k-source/Iz.txt', 'r').read().split()
 
 ix1 = 1.0*10**-6
 ix2 = 1.0*10**-5
@@ -30,19 +30,17 @@ for x in Iz1:
     iz_theo3.append(ix3**2/Iy[i])
     i = i+1
 
-# i = 0
-# for x in Iz2:
-#     val = -1*float(x)
-#     Iz2[i]= val
-#     iz_theo2.append(ix2**2/Iy[i])
-#     i = i+1
-#
-# i = 0
-# for x in Iz3:
-#     val = -1*float(x)
-#     Iz3[i]= val
-#     iz_theo3.append(ix3**2/Iy[i])
-#     i = i+1
+i = 0
+for x in Iz2:
+    val = -1*float(x)
+    Iz2[i]= val
+    i = i+1
+
+i = 0
+for x in Iz3:
+    val = -1*float(x)
+    Iz3[i]= val
+    i = i+1
 
 
 
@@ -52,9 +50,9 @@ if __name__ == '__main__':
     xLabel = "Iy (A)"
     yLabel = "Iz (A)"
 
-    Data = plt.loglog(Iy, Iz1, 'bo', markersize=3, label="Ix1= "+str(ix1))
-    #Data = plt.loglog(Iy, Iz2, 'ro', markersize=3, label="Ix2= "+str(ix2))
-    #Data = plt.loglog(Iy, Iz3, 'go', markersize=3, label="Ix3= "+str(ix3))
+    Data = plt.loglog(Iy, Iz1, 'bo', markersize=3, label="Ix1= "+str(ix1) + " A")
+    Data = plt.loglog(Iy, Iz2, 'ro', markersize=3, label="Ix2= "+str(ix2) + " A")
+    Data = plt.loglog(Iy, Iz3, 'go', markersize=3, label="Ix3= "+str(ix3) + " A")
 
     Data = plt.loglog(Iy, iz_theo1, 'b-', markersize=3, label="Ix1 theoretical")
     Data = plt.loglog(Iy, iz_theo2, 'r-', markersize=3, label="Ix2 theoretical")

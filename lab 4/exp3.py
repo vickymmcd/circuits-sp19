@@ -2,10 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 
-Ix = open('exp32/2.94k-sink/Ix.txt', 'r').read().split()
-Iz1 = open('exp32/2.94k-sink/Iz.txt', 'r').read().split()
-Iz2 = open('exp32/28k-sink/Iz.txt', 'r').read().split()
-Iz3 = open('exp32/294k-sink/Iz.txt', 'r').read().split()
+Ix = open('exp3/294k-sink/Ix.txt', 'r').read().split()
+Iz1 = open('exp3/2.94k-sink/Iz.txt', 'r').read().split()
+Iz2 = open('exp3/28k-sink/Iz.txt', 'r').read().split()
+Iz3 = open('exp3/294k-sink/Iz.txt', 'r').read().split()
 
 iy1 = .23/(2940)
 iy2 = .23/(28000)
@@ -25,21 +25,24 @@ i = 0
 for x in Iz1:
     val = -1*float(x)
     Iz1[i]= val
-    iz_theo1.append(Ix[i]**2/iy1)
+
     i = i+1
 
 i = 0
 for x in Iz2:
     val = -1*float(x)
     Iz2[i]= val
-    iz_theo2.append(Ix[i]**2/iy2)
+
     i = i+1
 
 i = 0
 for x in Iz3:
     val = -1*float(x)
     Iz3[i]= val
+    iz_theo1.append(Ix[i]**2/iy1)
+    iz_theo2.append(Ix[i]**2/iy2)
     iz_theo3.append(Ix[i]**2/iy3)
+
     i = i+1
 
 
