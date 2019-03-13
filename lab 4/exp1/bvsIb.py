@@ -15,13 +15,13 @@ Exp4_Ib = open('four/Ib.txt', 'r').read().split()
 
 if __name__ == '__main__':
     plt.figure(0)
-    title = "Collector Current and Base Current vs Base Voltage"
-    xLabel = "Voltage In (V)"
-    yLabel = "Current(A)"
-    Data = plt.semilogy(beta1, Exp1_Ib , 'bo', markersize=3, label="Q1")
-    Data = plt.semilogy(beta2, Exp2_Ib , 'ro', markersize=3, label="Q2")
-    Data = plt.semilogy(beta3, Exp3_Ib , 'go', markersize=3, label="Q3")
-    Data = plt.semilogy(beta4, Exp4_Ib , 'b*', markersize=3, label="Q4")
+    title = "Beta versus Ib"
+    xLabel = "Beta"
+    yLabel = "Base Current(A)"
+    Data = plt.semilogx(Exp1_Ib ,beta1, 'bo', markersize=3, label="Q1")
+    Data = plt.semilogx(Exp2_Ib , beta2,'ro', markersize=3, label="Q2")
+    Data = plt.semilogx(Exp3_Ib , beta3,'go', markersize=3, label="Q3")
+    Data = plt.semilogx(Exp4_Ib , beta4,'ko', markersize=3, label="Q4")
 
     plt.legend()
     plt.xlabel(xLabel)
