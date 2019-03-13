@@ -2,11 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 
-Ix = open('exp32/2.94k-sink/Ix.txt', 'r').read().split()
-Iz1 = open('exp32/2.94k-sink/Iz.txt', 'r').read().split()
-Iz2 = open('exp32/28k-sink/Iz.txt', 'r').read().split()
-Iz3 = open('exp32/294k-sink/Iz.txt', 'r').read().split()
+Ix = open('exp3/294k-sink/Ix.txt', 'r').read().split()
+Iz1 = open('exp3/2.94k-sink/Iz.txt', 'r').read().split()
+Iz2 = open('exp3/28k-sink/Iz.txt', 'r').read().split()
+Iz3 = open('exp3/294k-sink/Iz.txt', 'r').read().split()
 
+iy1 = .23/(2940)
+iy2 = .23/(28000)
+iy3 = .23/(294000)
+
+iz_theo1 = []
+iz_theo2 = []
+iz_theo3 = []
 
 i = 0
 for x in Ix:
@@ -18,18 +25,24 @@ i = 0
 for x in Iz1:
     val = -1*float(x)
     Iz1[i]= val
+
     i = i+1
 
 i = 0
 for x in Iz2:
     val = -1*float(x)
     Iz2[i]= val
+
     i = i+1
 
 i = 0
 for x in Iz3:
     val = -1*float(x)
     Iz3[i]= val
+    iz_theo1.append(Ix[i]**2/iy1)
+    iz_theo2.append(Ix[i]**2/iy2)
+    iz_theo3.append(Ix[i]**2/iy3)
+
     i = i+1
 
 
@@ -46,6 +59,10 @@ if __name__ == '__main__':
     Data = plt.loglog(Ix, Iz1, 'bo', markersize=3, label="2.94K Ohms")
     Data = plt.loglog(Ix, Iz2, 'ro', markersize=3, label="28K Ohms")
     Data = plt.loglog(Ix, Iz3, 'go', markersize=3, label="294K Ohms")
+
+    Data = plt.loglog(Ix, iz_theo1, 'b-', markersize=3, label="Iy1 theoretical")
+    Data = plt.loglog(Ix, iz_theo2, 'r-', markersize=3, label="Iy2 theoretical")
+    Data = plt.loglog(Ix, iz_theo3, 'g-', markersize=3, label="Iy3 theoretical")
 
 
 
