@@ -28,6 +28,7 @@ for x in I_b_100:
     I_c_100.append((-1*I_eval) - I_bval)
     i = i+1
 
+print(U_t)
 R = 100
 i = 0
 for x in I_c_100:
