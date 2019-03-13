@@ -52,13 +52,13 @@ for x in Iz3:
 
 
 if __name__ == '__main__':
-    title = "Plot of current versus current fix me"
+    title = "Log Log Plot of Output Current for Current Sink"
     xLabel = "Ix (A)"
     yLabel = "Iz (A)"
 
-    Data = plt.loglog(Ix, Iz1, 'bo', markersize=3, label="2.94K Ohms")
-    Data = plt.loglog(Ix, Iz2, 'ro', markersize=3, label="28K Ohms")
-    Data = plt.loglog(Ix, Iz3, 'go', markersize=3, label="294K Ohms")
+    Data = plt.loglog(Ix, Iz1, 'bo', markersize=3, label="Iy1= "+str(iy1) + " A")
+    Data = plt.loglog(Ix, Iz2, 'ro', markersize=3, label="Iy2= "+str(iy2) + " A")
+    Data = plt.loglog(Ix, Iz3, 'go', markersize=3, label="Iy3= "+str(iy3) + " A")
 
     Data = plt.loglog(Ix, iz_theo1, 'b-', markersize=3, label="Iy1 theoretical")
     Data = plt.loglog(Ix, iz_theo2, 'r-', markersize=3, label="Iy2 theoretical")
