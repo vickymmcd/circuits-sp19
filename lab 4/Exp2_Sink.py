@@ -1,4 +1,5 @@
 
+#Sweeping Ix, setting Iy
 
 # Simple I-V Graph
 import numpy as np
@@ -68,17 +69,17 @@ for x in I_x3Temp:
 # print(math.sqrt(0.000001*I_x))
 
 # Setting up plot
-title = "Translinear cirucit output current (Iz) verse input current (Iy)"
+title = "Translinear cirucit output current (Iz) verse input current (Ix)"
 yLabel = "Iz (A)"
-xLabel = "Iy (A)"
+xLabel = "Ix (A)"
 
 # Plotting Data
 
-Data1 = plt.loglog(I_z1, I_x1, 'ro', markersize=3, label="Ix = 1e^-6")
+Data1 = plt.loglog(I_z1, I_x1, 'ro', markersize=3, label="Iy = 1e^-6")
 Data2 = plt.loglog(Theo_Z1, I_x1, 'r--', markersize=3, label="Iz = 1e^-6 *Iy")
-Data3 = plt.loglog(I_z2, I_x2, 'go', markersize=3, label="Ix = 1e^-5")
+Data3 = plt.loglog(I_z2, I_x2, 'go', markersize=3, label="Iy = 1e^-5")
 Data4 = plt.loglog(Theo_Z2, I_x2, 'g--', markersize=3, label="Iz = 1e^-5 *Iy")
-Data5 = plt.loglog(I_z3, I_x3, 'bo', markersize=3, label="Ix = 1e^-4")
+Data5 = plt.loglog(I_z3, I_x3, 'bo', markersize=3, label="Iy = 1e^-4")
 Data6 = plt.loglog(Theo_Z3, I_x3, 'b--', markersize=3, label="Iz = 1e^-4 *Iy")
 
 plt.xlabel(xLabel)
