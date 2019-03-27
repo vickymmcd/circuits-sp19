@@ -48,7 +48,7 @@ if __name__ == '__main__':
     Data = plt.plot(V_bVals, beta_vals, 'bo', markersize=3, label="300 Ohm Resistor")
 
     print(U_t)
-    #print(I_s)
+    print(I_s)
     #print(beta_vals)
     #print(beta)
 plt.show()

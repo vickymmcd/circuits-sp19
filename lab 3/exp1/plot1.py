@@ -3,7 +3,8 @@ import math
 import matplotlib.pyplot as plt
 from scipy import stats
 import matplotlib.ticker as plticker
-
+from consts import U_t
+from consts import I_s
 Exp1_Ib = open('../exp1/Ib.txt', 'r').read().split()
 Exp1_Ie = open('../exp1/Ie.txt', 'r').read().split()
 Exp1_Vb = open('../exp1/Vb.txt', 'r').read().split()
@@ -41,21 +42,22 @@ I_cVals = []
 # plt.grid(True)
 # plt.show()
 slope, intercept, r_value, p_value, std_err = stats.linregress(Exp1_Vb,Exp1_Ic)
-U_t = (1/slope)
+#U_t = (1/slope)
 for x in Exp1_Vb:
-     Exp1_Ib_Theo.append(1e-15*math.exp(x/U_t*1000))
+     Exp1_Ib_Theo.append(I_s*math.exp(x/U_t)/100)
 
 for x in Exp1_Vb:
-     Exp1_Ic_Theo.append(1e-12*math.exp(x/U_t*1000))
+     Exp1_Ic_Theo.append(I_s*math.exp(x/U_t))
+print (Exp1_Ic_Theo)
 if __name__ == '__main__':
  plt.figure(0)
  title = "Collector Current and Base Current vs Base Voltage"
  xLabel = "Voltage In (V)"
  yLabel = "Current(A)"
- Data = plt.semilogy(Exp1_Vb, Exp1_Ic , 'k-', markersize=3, label="Collector Characteristic w/o Resistor")
- Data1 = plt.semilogy(Exp1_Vb, Exp1_Ic_Theo , 'p-', markersize=3, label="Theoretical Collector Characteristic w/o Resistor")
- Data = plt.semilogy(Exp1_Vb, Exp1_Ib , 'b-', markersize=3, label="Base Characteristic w/o Resistor")
- Data1 = plt.semilogy(Exp1_Vb, Exp1_Ib_Theo , 'p-', markersize=3, label="Theoretical Base Characteristic w/o Resistor")
+ Data = plt.semilogy(Exp1_Vb, Exp1_Ic , 'ko', markersize=3, label="Collector Characteristic w/o Resistor")
+ Data1 = plt.semilogy(Exp1_Vb, Exp1_Ic_Theo , 'r-', markersize=3, label="Theoretical Collector Characteristic w/o Resistor")
+ Data = plt.semilogy(Exp1_Vb, Exp1_Ib , 'bo', markersize=3, label="Base Characteristic w/o Resistor")
+ Data1 = plt.semilogy(Exp1_Vb, Exp1_Ib_Theo , 'm-', markersize=3, label="Theoretical Base Characteristic w/o Resistor")
  plt.legend()
  plt.xlabel(xLabel)
  plt.ylabel(yLabel)

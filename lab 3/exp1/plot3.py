@@ -3,14 +3,18 @@ import math
 import matplotlib.pyplot as plt
 from scipy import stats
 import matplotlib.ticker as plticker
-
+from plot1 import Exp1_Ib_Theo,Exp1_Ic_Theo
+from plot4 import gm_theo,exp1_ib2
+from consts import U_t
 Exp1_Ib = open('../exp1/Ib.txt', 'r').read().split()
 Exp1_Ie = open('../exp1/Ie.txt', 'r').read().split()
 Exp1_Vb = open('../exp1/Vb.txt', 'r').read().split()
 i = 0
-Exp1_Ic_Theo = []
+#Exp1_Ic_Theo = []
 Exp1_Ic = []
-Exp1_Ib_Theo = []
+exp2=[]
+#Exp1_Ib_Theo = []
+rbtheo=0
 rb=[]
 Theorb = []
 exp1_ib2 = []

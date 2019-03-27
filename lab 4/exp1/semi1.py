@@ -5,21 +5,21 @@ from scipy import stats
 import matplotlib.ticker as plticker
 # from consts import U_t
 # from consts import I_s
-Exp1_Ib = open('1/Ib.txt', 'r').read().split()
-Exp1_Ie = open('1/Ie.txt', 'r').read().split()
-Exp1_Vb = open('1/Vb.txt', 'r').read().split()
+Exp1_Ib = open('one/Ib.txt', 'r').read().split()
+Exp1_Ie = open('one/Ie.txt', 'r').read().split()
+Exp1_Vb = open('one/Vb.txt', 'r').read().split()
 
-Exp2_Ib = open('2/Ib.txt', 'r').read().split()
-Exp2_Ie = open('2/Ie.txt', 'r').read().split()
-Exp2_Vb = open('2/Vb.txt', 'r').read().split()
+Exp2_Ib = open('two/Ib.txt', 'r').read().split()
+Exp2_Ie = open('two/Ie.txt', 'r').read().split()
+Exp2_Vb = open('two/Vb.txt', 'r').read().split()
 
-Exp3_Ib = open('3/Ib.txt', 'r').read().split()
-Exp3_Ie = open('3/Ie.txt', 'r').read().split()
-Exp3_Vb = open('3/Vb.txt', 'r').read().split()
+Exp3_Ib = open('three/Ib.txt', 'r').read().split()
+Exp3_Ie = open('three/Ie.txt', 'r').read().split()
+Exp3_Vb = open('three/Vb.txt', 'r').read().split()
 
-Exp4_Ib = open('4/Ib.txt', 'r').read().split()
-Exp4_Ie = open('4/Ie.txt', 'r').read().split()
-Exp4_Vb = open('4/Vb.txt', 'r').read().split()
+Exp4_Ib = open('four/Ib.txt', 'r').read().split()
+Exp4_Ie = open('four/Ie.txt', 'r').read().split()
+Exp4_Vb = open('four/Vb.txt', 'r').read().split()
 i = 0
 f=0
 j=0
@@ -82,16 +82,16 @@ if __name__ == '__main__':
  xLabel = "Voltage In (V)"
  yLabel = "Current(A)"
  Data = plt.semilogy(Exp1_Vb, Exp1_Ic , 'bo', markersize=3, label="Q1 Collector Characteristic")
- Data = plt.semilogy(Exp1_Vb, Exp1_Ib , 'b-', markersize=3, label="Q1 Base Characteristic")
+ Data = plt.semilogy(Exp1_Vb, Exp1_Ib , 'b*', markersize=3, label="Q1 Base Characteristic")
 
  Data = plt.semilogy(Exp2_Vb, Exp2_Ic , 'ro', markersize=3, label="Q2 Collector Characteristic")
- Data = plt.semilogy(Exp2_Vb, Exp2_Ib , 'r-', markersize=3, label="Q2 Base Characteristic")
+ Data = plt.semilogy(Exp2_Vb, Exp2_Ib , 'r*', markersize=3, label="Q2 Base Characteristic")
 
  Data = plt.semilogy(Exp3_Vb, Exp3_Ic , 'ko', markersize=3, label="Q3 Collector Characteristic")
- Data = plt.semilogy(Exp3_Vb, Exp3_Ib , 'k-', markersize=3, label="Q3 Base Characteristic")
+ Data = plt.semilogy(Exp3_Vb, Exp3_Ib , 'k*', markersize=3, label="Q3 Base Characteristic")
 
 Data = plt.semilogy(Exp4_Vb, Exp4_Ic , 'bo', markersize=3, label="Q4 Collector Characteristic")
-Data = plt.semilogy(Exp4_Vb, Exp4_Ib , 'b-', markersize=3, label="Q4 Base Characteristic")
+Data = plt.semilogy(Exp4_Vb, Exp4_Ib , 'b*', markersize=3, label="Q4 Base Characteristic")
 
 plt.legend()
 plt.xlabel(xLabel)
