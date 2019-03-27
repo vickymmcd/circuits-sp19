@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 #Script to semilog-plot the channel current as a function of gate voltage of nMOS transistor
 #Extracts Is, κ, and VT0
@@ -12,8 +12,8 @@ from scipy.optimize import curve_fit
 from scipy import stats
 
 # Importing Data
-CcRaw = open('../Cc.txt', 'r').read().split() #Collector Current
-VgRaw = open('../Vg.txt', 'r').read().split() #Gate Voltage
+CcRaw = open('../pmos exp1/Id.txt', 'r').read().split() #Collector Current
+VgRaw = open('../pmos exp1/Vg.txt', 'r').read().split() #Gate Voltage
 
 
 Cc = []
@@ -22,12 +22,11 @@ Vg = []
 TheoCC = []
 
 
-k = 1.381e^-23
+k = 1.381e-23
 #Is = ??
 #Ut = ??
 
 #nMOS EKV current equation:
-#NEED TO CHANGE FOR pMOS
 # I =Is e^(κ(Vg-Vto)/Ut) * (e^(-Vs/Ut) -e^(-Vd/Ut))
 
 
@@ -35,24 +34,26 @@ i = 0
 for x in CcRaw:
     cVal = float(x)
     vVal = float(VgRaw[i])
+    CcRaw[i] = -float(CcRaw[i])
+    VgRaw[i] = float(VgRaw[i])
     i+=1
-    TheoCC = #EQUATION
-
+    #TheoCC = #EQUATION
 
 # Setting up plot
-title = "Collector Current as a function of gate voltage for an pMOS transistor"
+title = "Collector Current as a function of gate voltage for an nMOS transistor"
 yLabel = "Collector Current (A)"
 xLabel = "Gate Voltage (V)"
+
 # Plotting Data
 
-Data1 = plt.semilogy(Vg, Cc, 'ro', markersize=3, label="pMOS Cc of Vg")
-Data2 = plt.semilogy(Vg, TheoCC 'r--', markersize=3, label="EKV Model")
+Data1 = plt.semilogy(VgRaw, CcRaw, 'ro', markersize=3, label="experimental")
+#Data2 = plt.semilogy(Vg, TheoCC 'r--', markersize=3, label="EKV Model")
 
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
 plt.legend()
-plt.savefig('Exp1pMOS.png', format='png')
+plt.savefig('Exp1nMOS.png', format='png')
 plt.show()
 
 
