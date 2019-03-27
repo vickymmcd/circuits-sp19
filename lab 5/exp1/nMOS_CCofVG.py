@@ -3,8 +3,9 @@
 #Script to semilog-plot the channel current as a function of gate voltage of nMOS transistor
 #Extracts Is, κ, and VT0
 #Plots theoretical EKV model
-
-
+import sys
+sys.path.append('..')
+from ekvfit import ekvfit
 import numpy as np
 import math
 import matplotlib.pyplot as plt
