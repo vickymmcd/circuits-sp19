@@ -32,7 +32,7 @@ xLabel = "Iy (Amps)"
 
 # Plotting Data
 
-Data1 = plt.loglog(I_z, I_y, 'ro', markersize=3)
+Data1 = plt.loglog(I_z, I_y, 'ro', markersize=3, label="Ix = 1e^-6")
 
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)

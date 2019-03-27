@@ -67,9 +67,9 @@ for x in I_y3Temp:
 # print(math.sqrt(0.000001*I_x))
 
 # Setting up plot
-title = "Translinear cirucit output current (Iz) verse input current (Ix)"
+title = "Translinear cirucit output current (Iz) verse input current (Iy)"
 yLabel = "Iz (A)"
-xLabel = "Ix (A)"
+xLabel = "Iy (A)"
 
 # Plotting Data
 

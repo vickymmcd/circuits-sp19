@@ -46,7 +46,7 @@ for x in Iz3:
 
 
 if __name__ == '__main__':
-    title = "Plot of current versus current fix me"
+    title = "Log Log Plot of Output Current for Current Source"
     xLabel = "Iy (A)"
     yLabel = "Iz (A)"
 
