@@ -3,8 +3,8 @@ import math
 import matplotlib.pyplot as plt
 from scipy import stats
 import matplotlib.ticker as plticker
-from plot1 import Exp1_Ib_Theo,Exp1_Ic_Theo
-from plot4 import gm_theo,exp1_ib2
+from  plot1 import Exp1_Ic_Theo
+from plot1 import Exp1_Ib_Theo
 from consts import U_t
 Exp1_Ib = open('../exp1/Ib.txt', 'r').read().split()
 Exp1_Ie = open('../exp1/Ie.txt', 'r').read().split()
@@ -12,12 +12,12 @@ Exp1_Vb = open('../exp1/Vb.txt', 'r').read().split()
 i = 0
 #Exp1_Ic_Theo = []
 Exp1_Ic = []
-exp2=[]
 #Exp1_Ib_Theo = []
-rbtheo=0
-rb=[]
+gm=[]
+gm_theo=[]
+exp1_ic2 = []
+exp1_ic21 = []
 exp1_ib2 = []
-rb_theo=[]
 for x in Exp1_Ib:
     I_bval = float(x)
     I_eval = float(Exp1_Ie[i])
@@ -29,22 +29,24 @@ for x in Exp1_Ib:
 
 for y in range(1,len(Exp1_Vb)):
     incv=Exp1_Vb[y]-Exp1_Vb[y-1]
-    inci=Exp1_Ib[y]-Exp1_Ib[y-1]
-    if inci != 0:
-        rb.append(incv/inci)
-        exp1_ib2.append(Exp1_Ib[y])
-for k in range(0,len(Exp1_Ib_Theo)):
-    rbtheo=U_t/Exp1_Ib_Theo[k]
-    if (rbtheo>150 and rbtheo<100000000):
-        rb_theo.append(rbtheo)
-        exp2.append(Exp1_Ib_Theo[k])
+    inib=Exp1_Ic[y]-Exp1_Ic[y-1]
+    if inib != 0:
+        gm.append(inib/incv)
+        exp1_ic2.append(Exp1_Ic[y])
+
+for h in range(1,len(Exp1_Ic_Theo)):
+    v=Exp1_Ic_Theo[h]
+    gm_theo.append(v/U_t)
+    exp1_ic21.append(Exp1_Ic_Theo[h])
+
+
 if __name__ == '__main__':
 
-   title = "Rb versus Ib"
-   xLabel = "Incremental Base Resistance (Ohms)"
-   yLabel = "Base Current (A)"
-   Data = plt.loglog(rb, exp1_ib2 , 'ko', markersize=3,label="Experimental")
-   Data = plt.loglog(rb_theo, exp2 , 'r-', markersize=3,label="Theoretical")
+   title = "gm versus Ic"
+   xLabel = "Incremental Transconductance Gain (S)"
+   yLabel = "Collector Current (A)"
+   Data = plt.loglog(gm, exp1_ic2 , 'ko', markersize=3,label="Experimental")
+   Data = plt.loglog(gm_theo, exp1_ic21  , 'r-', markersize=3,label="Theoretical (Ic/Ut)")
    plt.legend()
    plt.xlabel(xLabel)
    plt.ylabel(yLabel)
