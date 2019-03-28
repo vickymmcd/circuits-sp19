@@ -4,6 +4,9 @@
 #Extracts Is, κ, and VT0
 #Plots theoretical EKV model
 
+import sys
+sys.path.append('..')
+from ekvfit import ekvfit
 
 import numpy as np
 import math
@@ -20,24 +23,33 @@ Cc = []
 Vg = []
 
 TheoCC = []
-
-
-k = 1.381e-23
-#Is = ??
-#Ut = ??
+Vd = 5
+Ut = 0.025
 
 #nMOS EKV current equation:
-# I =Is e^(κ(Vg-Vto)/Ut) * (e^(-Vs/Ut) -e^(-Vd/Ut))
-
-
+# I =Is log^2 (1 + e^(K(Vgb-Vto)-Vdb)/2Ut)
 i = 0
 for x in CcRaw:
     cVal = float(x)
     vVal = float(VgRaw[i])
-    CcRaw[i] = -float(CcRaw[i])
+    CcRaw[i] = float(CcRaw[i])
     VgRaw[i] = float(VgRaw[i])
     i+=1
-    #TheoCC = #EQUATION
+
+
+
+[Is, Vt, Kappa] = ekvfit(np.array(VgRaw), np.array(CcRaw))
+
+print(Is)
+print(Vt)
+print(Kappa)
+
+i = 0
+for x in Cc:
+    vVal = VgRaw[i]
+    TheoCC[i] = Is*math.log(1 + math.exp(Kappa*(vVal-Vt)-5)/2*Ut)
+    i+=1
+
 
 # Setting up plot
 title = "Collector Current as a function of gate voltage for an nMOS transistor"
@@ -46,8 +58,8 @@ xLabel = "Gate Voltage (V)"
 
 # Plotting Data
 
-Data1 = plt.semilogy(VgRaw, CcRaw, 'ro', markersize=3, label="experimental")
-#Data2 = plt.semilogy(Vg, TheoCC 'r--', markersize=3, label="EKV Model")
+Data1 = plt.semilogy(Vg, Cc, 'ro', markersize=3, label="experimental")
+Data2 = plt.semilogy(Vg, TheoCC, 'r--', markersize=3, label="EKV Model")
 
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
