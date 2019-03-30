@@ -1,13 +1,14 @@
 import tkplot, math
 from numpy import *
+from linefit import linefit
 
 def num2str(x, n = 0):
 #    if not ((type(x) is float) or (type(x) is int) or (type(x) is long)):
 #        raise TypeError('x must be a numeric data type')
     x = float(x)
-    multipliers = (1., 1e-3, 1e-6, 1e-9, 1e-12, 1e-15, 1e-18, 1e-21, 1e-24, 
+    multipliers = (1., 1e-3, 1e-6, 1e-9, 1e-12, 1e-15, 1e-18, 1e-21, 1e-24,
                    1e24, 1e21, 1e18, 1e15, 1e12, 1e9, 1e6, 1e3)
-    prefixes = ('', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', 
+    prefixes = ('', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y',
                 'y', 'z', 'a', 'f', 'p', 'n', 'u', 'm')
     if abs(x) == 0.:
         index = 0
@@ -21,7 +22,7 @@ def num2str(x, n = 0):
 def str2num(s):
 #    if not (type(s) is str):
 #        raise TypeError('s must be a string')
-    multipliers = {'k': 1e3, 'M': 1e6, 'G': 1e9, 'T': 1e12, 'P': 1e15, 'E': 1e18, 'Z': 1e21, 'Y': 1e24, 
+    multipliers = {'k': 1e3, 'M': 1e6, 'G': 1e9, 'T': 1e12, 'P': 1e15, 'E': 1e18, 'Z': 1e21, 'Y': 1e24,
                    'y': 1e-24, 'z': 1e-21, 'a': 1e-18, 'f': 1e-15, 'p': 1e-12, 'n': 1e-9, 'u': 1e-6, 'm': 1e-3}
     if s[-1] in multipliers.keys():
         return float(s[0 : -1]) * multipliers[s[-1]]
@@ -58,7 +59,7 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     expression, given above, applied to ISAT versus VG.  The slope of this
     curve should be kappa/(2*UT) and the VG-axis intercept should be VT.
 
-    See the LINEFIT docstring for an explanation of the EPSILON 
+    See the LINEFIT docstring for an explanation of the EPSILON
     parameter.
     '''
     if not isinstance(Vg, ndarray) or not isinstance(Isat, ndarray):
@@ -195,4 +196,3 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
         fig.ylabel('EKV Fit: Is = {0!s}A, VT = {1!s}V, kappa = {2!s}'.format(num2str(Is, 3), round(VT, 3), round(kappa, 3)), side = 'right')
         raw_input()
     return [Is, VT, kappa]
-

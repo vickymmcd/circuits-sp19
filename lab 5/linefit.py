@@ -2,6 +2,7 @@
 from numpy import *
 
 def linefit(x, y, epsilon = 0.001):
+    
     '''
     Attempts to fit a straight line to an appropriate part of the curve
     specified by x and y.  It steps through the curve specified by
