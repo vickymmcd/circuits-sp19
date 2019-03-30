@@ -2,6 +2,7 @@
 from numpy import *
 
 def linefit(x, y, epsilon = 0.001):
+
     '''
     Attempts to fit a straight line to an appropriate part of the curve
     specified by x and y.  It steps through the curve specified by
@@ -51,7 +52,6 @@ def linefit(x, y, epsilon = 0.001):
                     b = (sumY - m * sumX) / N
                     R2 = SXY * SXY / (SXX * SYY)
                 if (N >= 4) and (abs(m) > abs(mmax)):
-                    print("hola")
                     first = i
                     last = j
                     mmax = m
