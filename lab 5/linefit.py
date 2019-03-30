@@ -27,6 +27,7 @@ def linefit(x, y, epsilon = 0.001):
             mmax = 0
             bmax = 0
             Nmax = 0
+            N = 0
             i = 0
             while i < len(x) - 1:
                 R2 = 1
@@ -59,7 +60,7 @@ def linefit(x, y, epsilon = 0.001):
                     bmax = b
                     Nmax = N
                 i = j
-            return [first, last, mmax, bmax, Nmax]
+            return [first, last, mmax, bmax, N]
         else:
             raise IndexError('ndarrays supplied to linefit must be of the same length')
     else:

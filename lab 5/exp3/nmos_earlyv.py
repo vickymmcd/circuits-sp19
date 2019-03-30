@@ -5,7 +5,6 @@ sys.path.append('..')
 from ekvfit import ekvfit
 from linefit import linefit
 import numpy as np
-from scipy import stats
 import matplotlib.pyplot as plt
 
 # Importing Data
@@ -24,11 +23,9 @@ Vd = []
 Vd2 = []
 Vd3 = []
 
-Vsat = []
-Isat = []
+Vg = []
 
-Iextra = []
-Vextra = []
+TheoCC = []
 
 
 k = 1.381e-23
@@ -38,7 +35,7 @@ k = 1.381e-23
 #nMOS EKV current equation:
 # I =Is e^(κ(Vg-Vto)/Ut) * (e^(-Vs/Ut) -e^(-Vd/Ut))
 
-counter = 0
+
 i = 0
 for x in Iraw:
     cVal = float(x)
@@ -48,20 +45,8 @@ for x in Iraw:
     if Iraw[i] > 0:
         Ilogged.append(np.log(Iraw[i]))
         Vd.append(VdRaw[i])
-        if VdRaw[i] > 1.5:
-            Vsat.append(VdRaw[i])
-            Isat.append(np.log(Iraw[i]))
-    if i > 40:
-        if counter == 4:
-            Iextra.append(Iraw[i])
-            Vextra.append(VdRaw[i])
-            counter = 0
-        counter+=1
-    else:
-        Iextra.append(Iraw[i])
-        Vextra.append(VdRaw[i])
     i+=1
-
+    #TheoCC = #EQUATION
 
 i = 0
 for x in Iraw2:
@@ -97,18 +82,7 @@ ro2 = 1/inversero
 inversero = (Ilogged3[55] - Ilogged3[54]) / (Vd3[55] - Vd3[54])
 ro3 = 1/inversero
 
-#Is, VT, kappa = ekvfit(np.array(Vextra[1:]), np.array(Iextra[1:]))
-# heoCC = []
-# for vval in Vextra[1:]:
-#     heoCC.append(Is * (np.log(1 + np.exp(kappa*(vVal-float(VT))/(2*0.0258))))**2)
-#print(Is, VT, kappa)
-slope, intercept, r_value, p_value, std_err = stats.linregress(Vd[:5], Ilogged[:5])
-
-slope2, intercept2, r_value, p_value, std_err = stats.linregress(Vsat, Isat)
-Vsat = np.array(Vsat)
-print(Vsat)
-
-if __name__ == '__main__':
+if __name__ == '___main__':
     print(ro, ro2, ro3)
     print(gs, gs2, gs3)
 
@@ -119,12 +93,9 @@ if __name__ == '__main__':
 
     # Plotting Data
 
-    Data1 = plt.semilogy(Vextra, Iextra, 'ro', markersize=3, label="Vg=5V (Strong Inversion)")
+    Data1 = plt.semilogy(VdRaw, Iraw, 'ro', markersize=3, label="Vg=5V (Strong Inversion)")
     Data1 = plt.semilogy(VdRaw2, Iraw2, 'go', markersize=3, label="Vg=.8V (Moderate Inversion)")
     Data1 = plt.semilogy(VdRaw3, Iraw3, 'bo', markersize=3, label="Vg=.7V (Weak Inversion)")
-    Data = plt.plot(Vsat, np.exp(slope2*(Vsat)+intercept2), 'r', label="fitted line: y=e^("+str(round(slope2, 5))+"x + " +str(round(intercept2, 5)) + ")")
-    #Data = plt.plot(Vd[:5], np.exp(slope*(np.array(Vd[:5]))+intercept), 'r', label="fitted line: y=e^("+str(round(slope, 5))+"x + " +str(round(intercept, 5)) + ")")
-    #Data = plt.plot(Vextra[1:], heoCC, 'b', label="hi")
 
     #Data2 = plt.semilogy(Vg, TheoCC 'r--', markersize=3, label="EKV Model")
 
