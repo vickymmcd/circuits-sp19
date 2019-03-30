@@ -30,12 +30,13 @@ xLabel = "Source Voltage"
 [first, last, mmax, bmax, Nmax]=linefit(np.array(pV),np.array(pI))
 x = np.logspace(.25,.55,2)
 y = mmax*x+bmax
-
+print(mmax)
 Data1 = plt.semilogx(pV, pI, 'ro', markersize=3)
-Data2=plt.semilogx(x, y, '-r', label='best fit')
+labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5))
+Data2=plt.semilogx(x, y, '-b', label=labely)
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
 plt.legend()
-plt.savefig('Exp2nMOSsemi.png', format='png')
+plt.savefig('Exp2pMOSsemi.png', format='png')
 plt.show()

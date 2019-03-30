@@ -28,11 +28,11 @@ yLabel = "Current"
 xLabel = "Source Voltage"
 
 [first, last, mmax, bmax, Nmax]=linefit(np.array(nV),np.array(nI))
-x = np.logspace(-.5,-.15,2)
-y = mmax*x+bmax
-
+x = np.linspace(.15,1,2)
+y = mmax*x+bmax-.0018
+labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5)-.0018)
 Data1 = plt.semilogx(nV, nI, 'ro', markersize=3)
-Data2=plt.semilogx(x, y, '-r', label='best fit')
+Data2=plt.semilogx(x, y, '-b', label=labely)
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
