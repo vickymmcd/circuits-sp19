@@ -27,8 +27,12 @@ title = "Current as a function of the Source Voltage in nMOS"
 yLabel = "Current"
 xLabel = "Source Voltage"
 
-[ss,s,sss,kk,k]=linefit(np.array(nV),np.array(nI))
+[first, last, mmax, bmax, Nmax]=linefit(np.array(nV),np.array(nI))
+x = np.logspace(-.5,-.15,2)
+y = mmax*x+bmax
+
 Data1 = plt.semilogx(nV, nI, 'ro', markersize=3)
+Data2=plt.semilogx(x, y, '-r', label='best fit')
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
