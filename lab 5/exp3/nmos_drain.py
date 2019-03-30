@@ -3,6 +3,7 @@
 import sys
 sys.path.append('..')
 from ekvfit import ekvfit
+from linefit import linefit
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -49,6 +50,10 @@ for x in Iraw3:
     VdRaw3[i] = float(VdRaw3[i])
     i+=1
 
+# we know that gs = slope of drain characteristic deep in the ohmic region
+[first, last, mmax, bmax, Nmax] = linefit(np.array(VdRaw[0:5]), np.array(Iraw[0:5]))
+print([first, last, mmax, bmax, Nmax])
+
 # Setting up plot
 title = "nMOS Drain Characteristic"
 yLabel = "Channel Current (A)"
@@ -56,9 +61,9 @@ xLabel = "Drain Voltage (V)"
 
 # Plotting Data
 
-Data1 = plt.semilogy(VdRaw, Iraw, 'ro', markersize=3, label="Vg=5V (Strong Inversion)")
-Data1 = plt.semilogy(VdRaw2, Iraw2, 'go', markersize=3, label="Vg=.8V (Moderate Inversion)")
-Data1 = plt.semilogy(VdRaw3, Iraw3, 'bo', markersize=3, label="Vg=.7V (Weak Inversion)")
+Data1 = plt.semilogy(VdRaw[0:5], Iraw[0:5], 'ro', markersize=3, label="Vg=5V (Strong Inversion)")
+#Data1 = plt.semilogy(VdRaw2, Iraw2, 'go', markersize=3, label="Vg=.8V (Moderate Inversion)")
+#Data1 = plt.semilogy(VdRaw3, Iraw3, 'bo', markersize=3, label="Vg=.7V (Weak Inversion)")
 
 #Data2 = plt.semilogy(Vg, TheoCC 'r--', markersize=3, label="EKV Model")
 

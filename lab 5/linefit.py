@@ -3,14 +3,14 @@ from numpy import *
 
 def linefit(x, y, epsilon = 0.001):
     '''
-    Attempts to fit a straight line to an appropriate part of the curve 
-    specified by x and y.  It steps through the curve specified by 
-    ndarrays x and y searching for a consecutive run of at least 10 
-    coordinate pairs to which a straight line can be fit using linear 
-    regression with an R^2 (i.e., goodness of fit) value of greater 
-    than 1-epsilon.  If there is more than one such run of points, 
-    the one with the steepest slope is selected.  A typical value 
-    for epsilon is in the range of 5e-4 to 5e-3.  The return values 
+    Attempts to fit a straight line to an appropriate part of the curve
+    specified by x and y.  It steps through the curve specified by
+    ndarrays x and y searching for a consecutive run of at least 10
+    coordinate pairs to which a straight line can be fit using linear
+    regression with an R^2 (i.e., goodness of fit) value of greater
+    than 1-epsilon.  If there is more than one such run of points,
+    the one with the steepest slope is selected.  A typical value
+    for epsilon is in the range of 5e-4 to 5e-3.  The return values
     are [first, last, mmax, bmax, Nmax], where
 
         first is the index of the first point used in the fit,
@@ -50,7 +50,8 @@ def linefit(x, y, epsilon = 0.001):
                     m = SXY / SXX
                     b = (sumY - m * sumX) / N
                     R2 = SXY * SXY / (SXX * SYY)
-                if (N > 10) and (abs(m) > abs(mmax)):
+                if (N >= 4) and (abs(m) > abs(mmax)):
+                    print("hola")
                     first = i
                     last = j
                     mmax = m
@@ -62,4 +63,3 @@ def linefit(x, y, epsilon = 0.001):
             raise IndexError('ndarrays supplied to linefit must be of the same length')
     else:
         raise ValueError('x and y arguments supplied to linefit must be ndarrays')
-
