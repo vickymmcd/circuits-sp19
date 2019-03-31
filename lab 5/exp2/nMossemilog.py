@@ -18,7 +18,7 @@ pV=[]
 i = 0
 
 for x in nIout:
-    nI.append(float(x))
+    nI.append(float(x)*-1)
     nV.append(float(nVin[i]))
     #pI.append(float(pIout[i])*-1)
     #pV.append(float(pVin[i]))
@@ -28,11 +28,13 @@ yLabel = "Current"
 xLabel = "Source Voltage"
 
 [first, last, mmax, bmax, Nmax]=linefit(np.array(nV),np.array(nI))
-x = np.linspace(.15,1,2)
-y = mmax*x+bmax-.0018
-labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5)-.0018)
-Data1 = plt.semilogx(nV, nI, 'ro', markersize=3)
-Data2=plt.semilogx(x, y, '-b', label=labely)
+x = np.linspace(1.5,3.5,2)
+y = mmax*x+bmax+.0018
+labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5)+.0018)
+#Data1 = plt.semilogy(nV, nI, 'ro', markersize=3)
+print(x)
+print(y)
+Data2=plt.semilogy(x, y,b', label=labely)
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
