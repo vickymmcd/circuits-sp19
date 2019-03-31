@@ -59,7 +59,7 @@ def linefit(x, y, epsilon = 0.001):
                     bmax = b
                     Nmax = N
                 i = j
-            return [first, last, mmax, bmax, Nmax]
+            return [first, last, mmax, bmax, N]
         else:
             raise IndexError('ndarrays supplied to linefit must be of the same length')
     else:
