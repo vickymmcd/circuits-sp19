@@ -27,8 +27,12 @@ title = "Current as a function of the Source Voltage in nMOS"
 yLabel = "Current"
 xLabel = "Source Voltage"
 
-[ss,s,sss,kk,k]=linefit(np.array(nV),np.array(nI))
+[first, last, mmax, bmax, Nmax]=linefit(np.array(nV),np.array(nI))
+x = np.linspace(.15,1,2)
+y = mmax*x+bmax-.0018
+labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5)-.0018)
 Data1 = plt.semilogx(nV, nI, 'ro', markersize=3)
+Data2=plt.semilogx(x, y, '-b', label=labely)
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
