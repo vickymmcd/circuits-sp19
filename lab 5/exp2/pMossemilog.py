@@ -31,7 +31,8 @@ xLabel = "Source Voltage"
 x = np.logspace(.25,.55,2)
 y = mmax*x+bmax
 print(mmax)
-Data1 = plt.semilogx(pV, pI, 'ro', markersize=3)
+Data1 = plt.semilogx(pV[0:35], pI[0:35], 'ro', markersize=3)
+print(pI[35])
 labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5))
 Data2=plt.semilogx(x, y, '-b', label=labely)
 plt.xlabel(xLabel)

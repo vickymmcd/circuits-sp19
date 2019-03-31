@@ -13,8 +13,15 @@ pI=[]
 pV=[]
 ppI=[]
 ppV=[]
+gsw=[]
+gss=[]
+gsp=[]
+gwp=[]
+ge=[]
+
 i = 0
 thres=0
+ro=-1/.00045
 for x in pIout:
     pI.append(float(x)*1)
     pV.append(float(pVin[i]))
@@ -29,23 +36,32 @@ for x in pIout:
     else:
         ppI.append(pI)
         ppV.append(pV)
+print(pI)
+ge=np.diff(pI)/np.diff(pV)
 
-[Is,Ut,Kappa]=ekvfit(np.array(pV),np.array(pI))
 #Strong Inversion
-#gs=sqrt(Is*Isat)/Ut
-
-
-
+for p in pI[6:]:
+    va=ro*p
+    gss.append(math.sqrt((.00005*p)/.0258))
+    gsp.append(va/(.0258*ro)*math.sqrt(.00005/p))
 #Weak Inversion
-#gs=Isat/Ut
-title = "Current as a function of the Source Voltage in nMOS"
-yLabel = "Current"
-xLabel = "Source Voltage"
+for i in pI[6:]:
+    va=ro*i
+    gsw.append(i/.0258)
+    gwp.append(va/(.0258*ro))
+
+title = "Current as a function of the Source Voltage in pMOS"
+yLabel = "I_sat(amps)"
+xLabel = "Incremental Source Conductance (gs) (mhos)"
 
 [first, last, mmax, bmax, Nmax]=linefit(np.array(pV[6:]),np.array(pI[6:]))
 x = np.logspace(.25,.55,2)
 y = mmax*x+bmax
-Data2=plt.loglog(gs, pI, '-r','ro')
+Data2=plt.loglog( pI[1:],ge, 'bo',label='Experimental')
+Data2=plt.loglog( pI[6:],gss, '-m',label='Strong Inversion Region Fit')
+Data2=plt.loglog( pI[6:],gsw, '-r',label='Weak Inversion Region Fit')
+#Data2=plt.loglog(gsp, pI[6:], 'go')
+#Data2=plt.loglog(gwp, pI[6:], 'mo')
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
