@@ -23,7 +23,7 @@ i = 0
 thres=0
 ro=-1/.00045
 for x in pIout:
-    pI.append(float(x)*1)
+    pI.append(float(x)*-1)
     pV.append(float(pVin[i]))
     i+=1
     if(i>20):
@@ -36,9 +36,9 @@ for x in pIout:
     else:
         ppI.append(pI)
         ppV.append(pV)
-print(pI)
-ge=np.diff(pI)/np.diff(pV)
 
+ge=-1*np.diff(pI)/np.diff(pV)
+print(ge)
 #Strong Inversion
 for p in pI[6:]:
     va=ro*p
@@ -50,7 +50,7 @@ for i in pI[6:]:
     gsw.append(i/.0258)
     gwp.append(va/(.0258*ro))
 
-title = "Current as a function of the Source Voltage in pMOS"
+title = "Current as a function of the Source Voltage in nMOS"
 yLabel = "I_sat(amps)"
 xLabel = "Incremental Source Conductance (gs) (mhos)"
 
@@ -60,8 +60,8 @@ y = mmax*x+bmax
 Data2=plt.loglog( pI[1:],ge, 'bo',label='Experimental')
 Data2=plt.loglog( pI[6:],gss, '-m',label='Strong Inversion Region Fit')
 Data2=plt.loglog( pI[6:],gsw, '-r',label='Weak Inversion Region Fit')
-Data2=plt.loglog(gsp, pI[6:], 'go')
-Data2=plt.loglog(gwp, pI[6:], 'mo')
+#Data2=plt.loglog(gsp, pI[6:], 'go')
+#Data2=plt.loglog(gwp, pI[6:], 'mo')
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)

@@ -20,21 +20,19 @@ i = 0
 for x in pIout:
     #nI.append(float(x))
     #nV.append(float(nVin[i]))
-    pI.append(float(x)*-1)
+    pI.append(float(x))
     pV.append(float(pVin[i]))
     i+=1
-title = "Current as a function of the Source Voltage in nMOS"
+title = "Current as a function of the Source Voltage in pMOS"
 yLabel = "Current"
 xLabel = "Source Voltage"
 
 [first, last, mmax, bmax, Nmax]=linefit(np.array(pV),np.array(pI))
-x = np.logspace(.25,.55,2)
+x = np.linspace(1,2,20)
 y = mmax*x+bmax
-print(mmax)
-Data1 = plt.semilogx(pV[0:35], pI[0:35], 'ro', markersize=3)
-print(pI[35])
+Data1 = plt.semilogy(pV, pI, 'ro', markersize=3)
 labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5))
-Data2=plt.semilogx(x, y, '-b', label=labely)
+Data2=plt.semilogy(x, y, '-b', label=labely)
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
