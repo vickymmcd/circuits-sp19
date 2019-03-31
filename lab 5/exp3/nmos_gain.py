@@ -21,9 +21,9 @@ for i, val in enumerate(Isat3):
 if __name__ == '__main__':
 
     # Setting up plot
-    title = "nMOS Early Voltage"
+    title = "nMOS Intrinsic Gain"
     xLabel = "Saturation Current (A)"
-    yLabel = "Early Voltage (V)"
+    yLabel = "Intrinsic Gain (???)"
 
     # Plotting Data
 

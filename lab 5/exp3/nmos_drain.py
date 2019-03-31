@@ -108,8 +108,6 @@ if __name__ == '__main__':
     #Data = plt.plot(Vsat3, np.exp(slope2*(Vsat3)+intercept2), 'r', label="fitted line: y=e^("+str(round(slope2, 5))+"x + " +str(round(intercept2, 5)) + ")")
     #Data = plt.plot(Vd[:5], np.exp(slope*(np.array(Vd[:5]))+intercept), 'r', label="fitted line: y=e^("+str(round(slope, 5))+"x + " +str(round(intercept, 5)) + ")")
 
-    #Data2 = plt.semilogy(Vg, TheoCC 'r--', markersize=3, label="EKV Model")
-
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)
     plt.title(title)
