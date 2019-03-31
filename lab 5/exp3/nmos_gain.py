@@ -4,20 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from nmos_drain import Isat, ro, Isat2, ro2, Isat3, ro3
 
-Va = []
-for i, val in enumerate(Isat):
-    Isat[i] = np.exp(val)
-    Va.append(np.exp(val)*ro)
-
-Va2 = []
-for i, val in enumerate(Isat2):
-    Isat2[i] = np.exp(val)
-    Va2.append(np.exp(val)*ro2)
-
-Va3 = []
-for i, val in enumerate(Isat3):
-    Isat3[i] = np.exp(val)
-    Va3.append(np.exp(val)*ro3)
+Is = 9.78e-8
 
 if __name__ == '__main__':
 
