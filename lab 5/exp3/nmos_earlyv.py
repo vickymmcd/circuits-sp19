@@ -3,7 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from nmos_drain import Isat, ro, Isat2, ro2, Isat3, ro3
-
+print(ro)
 Va = []
 for i, val in enumerate(Isat):
     Isat[i] = np.exp(val)
