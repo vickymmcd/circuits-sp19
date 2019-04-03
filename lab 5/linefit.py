@@ -2,7 +2,7 @@
 from numpy import *
 
 def linefit(x, y, epsilon = 0.001):
-    
+
     '''
     Attempts to fit a straight line to an appropriate part of the curve
     specified by x and y.  It steps through the curve specified by
@@ -51,14 +51,14 @@ def linefit(x, y, epsilon = 0.001):
                     m = SXY / SXX
                     b = (sumY - m * sumX) / N
                     R2 = SXY * SXY / (SXX * SYY)
-                if (N > 10) and (abs(m) > abs(mmax)):
+                if (N >4) and (abs(m) > abs(mmax)):
                     first = i
                     last = j
                     mmax = m
                     bmax = b
                     Nmax = N
                 i = j
-            return [first, last, mmax, bmax, Nmax]
+            return [first, last, mmax, bmax, N]
         else:
             raise IndexError('ndarrays supplied to linefit must be of the same length')
     else:

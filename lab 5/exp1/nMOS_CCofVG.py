@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
 
-#Script to semilog-plot the channel current as a function of gate voltage of nMOS transistor
-#Extracts Is, κ, and VT0
-#Plots theoretical EKV model
 import sys
 sys.path.append('..')
 from ekvfit import ekvfit
@@ -11,6 +7,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
+from numpy import *
 
 # Importing Data
 CcRaw = open('../nmos exp1/Id.txt', 'r').read().split() #Collector Current
@@ -27,24 +24,41 @@ Ut = 0.025
 i = 0
 #nMOS EKV current equation:
 # I =Is log^2 (1 + e^(K(Vgb-Vto)-Vdb)/2Ut)
+
+
+CcRaw[6] =  1e-9
+
+thres = 0
 for x in CcRaw:
     cVal = float(x)
     vVal = float(VgRaw[i])
-    Cc.append(float(CcRaw[i]))
-    Vg.append(float(VgRaw[i]))
     i+=1
+    if(i > 20):
+        if(thres == 4):
+            Cc.append(cVal)
+            Vg.append(vVal)
+        thres+=1
+        if(thres >4):
+            thres = 0
+    else:
+        Cc.append(cVal)
+        Vg.append(vVal)
 
-# [Is, Vt, Kappa] = ekvfit(np.array(Vg), np.array(Cc) )
-#
-# print(Is)
-# print(Vt)
-# print(Kappa)
-#
-# i = 0
-# for x in Cc:
-#     vVal = VgRaw[i]
-#     TheoCC[i] = Is*math.log(1 + math.exp(Kappa*(vVal-Vt)-5)/2*Ut)
-#     i+=1
+[Is, Vt, Kappa] = ekvfit(np.array(Vg[5:60]), np.array(Cc[5:60]))
+
+
+print("Is = ")
+print(Is)
+print("Vt = ")
+print(Vt)
+print("K =")
+print(Kappa)
+
+i = 0
+for x in Cc:
+    vVal = Vg[i]
+    TheoCC.append(Is * (math.log(1 + math.exp(Kappa*(vVal-float(Vt))/(2*0.0258))))**2)
+    i+=1
 
 # Setting up plot
 title = "Collector Current as a function of gate voltage for an nMOS transistor"
@@ -54,7 +68,7 @@ xLabel = "Gate Voltage (V)"
 # Plotting Data
 
 Data1 = plt.semilogy(Vg, Cc, 'ro', markersize=3, label="experimental")
-# Data2 = plt.semilogy(Vg, TheoCC, 'r--', markersize=3, label="EKV Model")
+Data2 = plt.semilogy(Vg[10:], TheoCC[10:], 'b--', markersize=3, label="EKV Model")
 
 
 

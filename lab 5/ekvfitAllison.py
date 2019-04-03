@@ -1,6 +1,8 @@
 import tkplot, math
+import numpy as np
 from numpy import *
 from linefit import linefit
+np.seterr(divide='ignore', invalid='ignore')
 
 def num2str(x, n = 0):
 #    if not ((type(x) is float) or (type(x) is int) or (type(x) is long)):
@@ -67,6 +69,7 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     if len(Vg) != len(Isat):
         raise IndexError('Vg and Isat must have the same length')
     plotting = kwargs.get('plotting', 'off')
+    # plotting = 'on'
     if plotting not in ('on', 'off'):
         raise ValueError("if supplied, plotting must be either 'on' or 'off'")
     if plotting == 'on':
@@ -88,8 +91,8 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
         fig.ylabel('Isat (A)')
         fig.ylabel('Weak-Inversion Fit', side = 'right')
         raw_input()
-    if min(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
-        raise ValueError('identified a candidate weak-inversion region, but all current levels exceed typical weak-inversion currents')
+    # if min(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
+    #     raise ValueError('identified a candidate weak-inversion region, but all current levels exceed typical weak-inversion currents')
     if max(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
         print 'ValueWarning: identified a candidate weak-inversion region, but some current levels exceed typical weak-inversion currents'
 #        warnings.warn('ValueWarning', 'identified a candidate weak-inversion region, but some current levels exceed typical weak-inversion currents')
@@ -106,8 +109,8 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
         fig.ylabel('sqrt(Isat) (sqrt(A))')
         fig.ylabel('Strong-Inversion Fit', side = 'right')
         raw_input()
-    if max(abs(array(Isat[SIfirst : SIlast + 1]))) < 0.1e-6:
-        raise ValueError('identified a candidate strong-inversion region, but all current levels are lower than typical strong-inversion currents')
+    # if max(abs(array(Isat[SIfirst : SIlast + 1]))) < 0.1e-6:
+    #     raise ValueError('identified a candidate strong-inversion region, but all current levels are lower than typical strong-inversion currents')
     if min(abs(array(Isat[SIfirst : SIlast + 1]))) < 0.1e-6:
         print 'ValueWarning: identified a candidate strong-inversion region, but some current levels are lower than typical strong-inversion currents'
 #        warnings.warn('ValueWarning', 'identified a candidate strong-inversion region, but some current levels are lower than typical strong-inversion currents')
@@ -138,6 +141,8 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     x3 = 10. * Is
 
     dVg = diff(array(Vg[first : last + 1]))
+    i = 0
+    print(x1)
     temp = diff(log(exp(sqrt(array(Isat[first : last + 1]) / x1)) - 1)) / dVg
     f1 = std(temp) / mean(temp)
     temp = diff(log(exp(sqrt(array(Isat[first : last + 1]) / x2)) - 1)) / dVg
@@ -176,7 +181,10 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     Is = x1 if f1 < f2 else x2
 
     [EKVfirst, EKVlast, m, b, N] = linefit(array(Vg[first : last + 1]), log(exp(sqrt(array(Isat[first : last + 1]) / Is)) - 1), epsilon)
-    VT = -b / m
+    if(m == 0):
+        VT = -b
+    else:
+        VT = -b / m
     kappa = 2 * m *0.0258
     if plotting == 'on':
         fig.semilogy(Vg, Isat)
