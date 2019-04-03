@@ -7,6 +7,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
+from pmosloglog import pI,ge,gss,gsw as ppI,pge,pgss,pgsw
 pIout = open('nmosexp2/Iout.txt', 'r').read().split()
 pVin = open('nmosexp2/Vin.txt', 'r').read().split()
 pI=[]
@@ -60,6 +61,7 @@ y = mmax*x+bmax
 Data2=plt.loglog( pI[1:],ge, 'bo',label='Experimental')
 Data2=plt.loglog( pI[6:],gss, '-m',label='Strong Inversion Region Fit')
 Data2=plt.loglog( pI[6:],gsw, '-r',label='Weak Inversion Region Fit')
+
 #Data2=plt.loglog(gsp, pI[6:], 'go')
 #Data2=plt.loglog(gwp, pI[6:], 'mo')
 plt.xlabel(xLabel)
