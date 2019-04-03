@@ -18,7 +18,7 @@ pV=[]
 i = 0
 
 for x in nIout:
-    nI.append(float(x)*-1)
+    nI.append(float(x))
     nV.append(float(nVin[i]))
     #pI.append(float(pIout[i])*-1)
     #pV.append(float(pVin[i]))
@@ -31,10 +31,12 @@ xLabel = "Source Voltage"
 x = np.linspace(1.5,3.5,2)
 y = mmax*x+bmax+.0018
 labely = "Fit for WI region: y="+str(round(mmax,5))+"x+ "+str(round(bmax,5)+.0018)
-#Data1 = plt.semilogy(nV, nI, 'ro', markersize=3)
+for i, val in enumerate(nI):
+    nI[i] = -1*nI[i]
+Data1 = plt.semilogy(nV, nI, 'ro', markersize=3)
 print(x)
 print(y)
-Data2=plt.semilogy(x, y,b', label=labely)
+Data2=plt.semilogy(x, y,'b', label=labely)
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
 plt.title(title)
