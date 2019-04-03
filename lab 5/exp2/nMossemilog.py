@@ -19,7 +19,7 @@ pV=[]
 i = 0
 
 for x in nIout:
-    nI.append(float(x)*-1)
+    nI.append(float(x))
     nV.append(float(nVin[i]))
     #pI.append(float(pIout[i])*-1)
     #pV.append(float(pVin[i]))

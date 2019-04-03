@@ -2,22 +2,16 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from pmos_drain import Isat, ro, Isat2, ro2, Isat3, ro3
+from pmos_drain import m, b, m2, b2, m3, b3
 
-Va = []
-for i, val in enumerate(Isat):
-    Isat[i] = np.exp(val)
-    Va.append(np.exp(val)*ro)
-
-Va2 = []
-for i, val in enumerate(Isat2):
-    Isat2[i] = np.exp(val)
-    Va2.append(np.exp(val)*ro2)
-
-Va3 = []
-for i, val in enumerate(Isat3):
-    Isat3[i] = np.exp(val)
-    Va3.append(np.exp(val)*ro3)
+# Isat is b
+# Va is b/m
+pb = b
+pb2 = b2
+pb3 = b3
+pVa = b/m
+pVa2 = b2/m2
+pVa3 = b3/m3
 
 if __name__ == '__main__':
 
@@ -28,13 +22,15 @@ if __name__ == '__main__':
 
     # Plotting Data
 
-    Data1 = plt.semilogx(Isat, Va, 'ro', markersize=3, label="Vg=0V (Strong Inversion)")
-    Data1 = plt.semilogx(Isat2, Va2, 'bo', markersize=3, label="Vg=4.2V (Moderate Inversion)")
-    Data1 = plt.semilogx(Isat3, Va3, 'go', markersize=3, label="Vg=4.3V (Weak Inversion)")
+    Data1 = plt.semilogx(-1*b, -1*pVa, 'ro', markersize=3, label="Vg=0V (Strong Inversion)")
+    Data1 = plt.semilogx(-1*b2, -1*pVa2, 'bo', markersize=3, label="Vg=4.2V (Moderate Inversion)")
+    Data1 = plt.semilogx(-1*b3, -1*pVa3, 'go', markersize=3, label="Vg=4.3V (Weak Inversion)")
 
 
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)
     plt.title(title)
     plt.legend()
+    plt.savefig('pmos_earlyv.png', format='png')
+
     plt.show()

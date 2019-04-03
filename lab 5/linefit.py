@@ -49,11 +49,18 @@ def linefit(x, y, epsilon = 0.001):
                     SXX = sumX2 - sumX * sumX / N
                     SYY = sumY2 - sumY * sumY / N
                     SXY = sumXY - sumX * sumY / N
+<<<<<<< HEAD
+                    m = SXY / SXX
+                    b = (sumY - m * sumX) / N
+                    R2 = SXY * SXY / (SXX * SYY)
+                if (N >4) and (abs(m) > abs(mmax)):
+=======
                     if (SXX != 0 and SYY != 0):
                         m = SXY / SXX
                         b = (sumY - m * sumX) / N
                         R2 = SXY * SXY / (SXX * SYY)
                 if (N >= 4) and (abs(m) > abs(mmax)):
+>>>>>>> 84576ced818c17f5de7b034f9600688229159bed
                     first = i
                     last = j
                     mmax = m

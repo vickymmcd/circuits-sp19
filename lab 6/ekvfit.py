@@ -67,6 +67,7 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     if len(Vg) != len(Isat):
         raise IndexError('Vg and Isat must have the same length')
     plotting = kwargs.get('plotting', 'off')
+    # plotting = 'on'
     if plotting not in ('on', 'off'):
         raise ValueError("if supplied, plotting must be either 'on' or 'off'")
     if plotting == 'on':
@@ -88,8 +89,8 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
         fig.ylabel('Isat (A)')
         fig.ylabel('Weak-Inversion Fit', side = 'right')
         raw_input()
-    # if min(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
-        #raise ValueError('identified a candidate weak-inversion region, but all current levels exceed typical weak-inversion currents')
+    if min(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
+        raise ValueError('identified a candidate weak-inversion region, but all current levels exceed typical weak-inversion currents')
     if max(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
         print 'ValueWarning: identified a candidate weak-inversion region, but some current levels exceed typical weak-inversion currents'
 #        warnings.warn('ValueWarning', 'identified a candidate weak-inversion region, but some current levels exceed typical weak-inversion currents')
