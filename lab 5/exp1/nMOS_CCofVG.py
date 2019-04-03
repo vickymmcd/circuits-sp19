@@ -9,7 +9,7 @@ from scipy.optimize import curve_fit
 from scipy import stats
 from numpy import *
 
-# Importing Data
+# Importing Data-
 CcRaw = open('../nmos exp1/Id.txt', 'r').read().split() #Collector Current
 VgRaw = open('../nmos exp1/Vg.txt', 'r').read().split() #Gate Voltage
 
