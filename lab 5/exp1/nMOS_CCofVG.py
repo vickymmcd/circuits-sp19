@@ -16,6 +16,7 @@ from scipy import stats
 CcRaw = open('../nmos exp1/Id.txt', 'r').read().split() #Collector Current
 VgRaw = open('../nmos exp1/Vg.txt', 'r').read().split() #Gate Voltage
 
+[Is, Vt, Kappa] = ekvfit(Vg, Isat, 5e-4)
 
 Cc = []
 Vg = []

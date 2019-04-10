@@ -4,6 +4,9 @@
 #Extracts Is, κ, and VT0
 #Plots theoretical EKV model
 
+import sys
+sys.path.append('..')
+from ekvfit import ekvfit
 
 import numpy as np
 import math
