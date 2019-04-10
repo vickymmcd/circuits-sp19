@@ -1,5 +1,6 @@
 import tkplot, math
 from numpy import *
+from linefit import linefit
 
 def num2str(x, n = 0):
 #    if not ((type(x) is float) or (type(x) is int) or (type(x) is long)):
@@ -66,6 +67,7 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     if len(Vg) != len(Isat):
         raise IndexError('Vg and Isat must have the same length')
     plotting = kwargs.get('plotting', 'off')
+    # plotting = 'on'
     if plotting not in ('on', 'off'):
         raise ValueError("if supplied, plotting must be either 'on' or 'off'")
     if plotting == 'on':

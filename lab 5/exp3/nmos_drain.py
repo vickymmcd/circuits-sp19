@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import sys
-sys.path.append('..')
-from ekvfit import ekvfit
 import numpy as np
+from scipy import stats
 import matplotlib.pyplot as plt
 
 # Importing Data
@@ -14,18 +12,24 @@ VdRaw2 = open('../nmos exp3 .8/Vd.txt', 'r').read().split()
 Iraw3 = open('../nmos exp3 .7/Id.txt', 'r').read().split()
 VdRaw3 = open('../nmos exp3 .7/Vd.txt', 'r').read().split()
 
-I = []
-Vg = []
+Ilogged = []
+Ilogged2 = []
+Ilogged3 = []
 
-TheoCC = []
+Vd = []
+Vd2 = []
+Vd3 = []
+
+Vsat = []
+Isat = []
+Vsat2 = []
+Isat2 = []
+Vsat3 = []
+Isat3 = []
 
 
-k = 1.381e-23
 #Is = ??
 #Ut = ??
-
-#nMOS EKV current equation:
-# I =Is e^(κ(Vg-Vto)/Ut) * (e^(-Vs/Ut) -e^(-Vd/Ut))
 
 
 i = 0
@@ -34,37 +38,78 @@ for x in Iraw:
     vVal = float(VdRaw[i])
     Iraw[i] = float(Iraw[i])
     VdRaw[i] = float(VdRaw[i])
+    if Iraw[i] > 0:
+        Ilogged.append(np.log(Iraw[i]))
+        Vd.append(VdRaw[i])
+        if VdRaw[i] > 1.5:
+            Vsat.append(VdRaw[i])
+            Isat.append((Iraw[i]))
     i+=1
-    #TheoCC = #EQUATION
+
 
 i = 0
 for x in Iraw2:
     Iraw2[i] = float(Iraw2[i])
     VdRaw2[i] = float(VdRaw2[i])
+    if Iraw[i] > 0:
+        Ilogged2.append(np.log(Iraw2[i]))
+        Vd2.append(VdRaw2[i])
+        if VdRaw2[i] > 1.5:
+            Vsat2.append(VdRaw2[i])
+            Isat2.append((Iraw2[i]))
     i+=1
 
 i = 0
 for x in Iraw3:
     Iraw3[i] = float(Iraw3[i])
     VdRaw3[i] = float(VdRaw3[i])
+    if Iraw[i] > 0:
+        Ilogged3.append(np.log(Iraw3[i]))
+        Vd3.append(VdRaw3[i])
+        if VdRaw3[i] > 1.5:
+            Vsat3.append(VdRaw3[i])
+            Isat3.append((Iraw3[i]))
     i+=1
 
-# Setting up plot
-title = "nMOS Drain Characteristic"
-yLabel = "Channel Current (A)"
-xLabel = "Drain Voltage (V)"
+slope, intercept, r_value, p_value, std_err = stats.linregress(Vd[:5], Ilogged[:5])
+gs = slope
 
-# Plotting Data
+m, b, r_value, p_value, std_err = stats.linregress(Vsat, Isat)
+ro = 1/m
 
-Data1 = plt.semilogy(VdRaw, Iraw, 'ro', markersize=3, label="Vg=5V (Strong Inversion)")
-Data1 = plt.semilogy(VdRaw2, Iraw2, 'go', markersize=3, label="Vg=.8V (Moderate Inversion)")
-Data1 = plt.semilogy(VdRaw3, Iraw3, 'bo', markersize=3, label="Vg=.7V (Weak Inversion)")
+slope, intercept, r_value, p_value, std_err = stats.linregress(Vd2[:5], Ilogged2[:5])
+gs2 = slope
 
-#Data2 = plt.semilogy(Vg, TheoCC 'r--', markersize=3, label="EKV Model")
+m2, b2, r_value, p_value, std_err = stats.linregress(Vsat2, Isat2)
+ro2 = 1/m2
 
-plt.xlabel(xLabel)
-plt.ylabel(yLabel)
-plt.title(title)
-plt.legend()
-plt.savefig('Exp3nMOS.png', format='png')
-plt.show()
+slope, intercept, r_value, p_value, std_err = stats.linregress(Vd3[:5], Ilogged3[:5])
+gs3 = slope
+
+m3, b3, r_value, p_value, std_err = stats.linregress(Vsat3, Isat3)
+ro3 = 1/m3
+
+
+if __name__ == '__main__':
+
+    # Setting up plot
+    title = "nMOS Drain Characteristic"
+    yLabel = "Channel Current (A)"
+    xLabel = "Drain Voltage (V)"
+
+    # Plotting Data
+
+    Data1 = plt.semilogy(VdRaw, Iraw, 'ro', markersize=3, label="Vg=5V (Strong Inversion)")
+    Data1 = plt.semilogy(VdRaw2, Iraw2, 'go', markersize=3, label="Vg=.8V (Moderate Inversion)")
+    Data1 = plt.semilogy(VdRaw3, Iraw3, 'bo', markersize=3, label="Vg=.7V (Weak Inversion)")
+    #Data = plt.plot(Vsat3, (m*(Vsat3)+b), 'r', label="fitted line: y=e^("+str(round(m, 5))+"x + " +str(round(b, 5)) + ")")
+    #Data = plt.plot(Vd[:5], np.exp(slope*(np.array(Vd[:5]))+intercept), 'r', label="fitted line: y=e^("+str(round(slope, 5))+"x + " +str(round(intercept, 5)) + ")")
+
+
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
+    plt.title(title)
+    plt.legend()
+    plt.savefig('nmos_drain.png', format='png')
+
+    plt.show()
