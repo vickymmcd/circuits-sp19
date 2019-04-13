@@ -25,7 +25,7 @@ if __name__ == "__main__":
     yLabel = "Voltage (V)"
     xLabel = "Voltage Differnce Vdm (V)"
 
-    Data2 = plt.plot(VdmRaw, VV4Raw, 'go', markersize=3, label="V2 = 4")
+    Data2 = plt.plot(VdmRaw, VV4Raw, 'go', markersize=3, label="V2 = 4V")
 
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)

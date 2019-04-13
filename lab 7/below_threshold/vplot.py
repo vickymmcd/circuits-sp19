@@ -30,9 +30,9 @@ if __name__ == "__main__":
     yLabel = "Voltage (V)"
     xLabel = "Voltage Differnce Vdm (V)"
 
-    Data1 = plt.plot(VdmRaw, VV3Raw, 'ro', markersize=3, label="V2 = 3")
-    Data2 = plt.plot(VdmRaw, VV4Raw, 'go', markersize=3, label="V2 = 4")
-    Data3 = plt.plot(VdmRaw, VV5Raw, 'bo', markersize=3, label="V2 = 5")
+    Data1 = plt.plot(VdmRaw, VV3Raw, 'ro', markersize=3, label="V2 = 3V")
+    Data2 = plt.plot(VdmRaw, VV4Raw, 'go', markersize=3, label="V2 = 4V")
+    Data3 = plt.plot(VdmRaw, VV5Raw, 'bo', markersize=3, label="V2 = 5V")
 
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)
