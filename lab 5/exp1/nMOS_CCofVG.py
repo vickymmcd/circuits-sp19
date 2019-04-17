@@ -8,12 +8,13 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
 from numpy import *
+from pMOS_CCofVG import Vg2, Cc2, TheoCC2
 
 # Importing Data-
 CcRaw = open('../nmos exp1/Id.txt', 'r').read().split() #Collector Current
 VgRaw = open('../nmos exp1/Vg.txt', 'r').read().split() #Gate Voltage
 
-[Is, Vt, Kappa] = ekvfit(Vg, Isat, 5e-4)
+#[Is, Vt, Kappa] = ekvfit(Vg, Isat, 5e-4)
 
 Cc = []
 Vg = []
@@ -61,16 +62,20 @@ for x in Cc:
     TheoCC.append(Is * (math.log(1 + math.exp(Kappa*(vVal-float(Vt))/(2*0.0258))))**2)
     i+=1
 
+for i, v in enumerate(Vg2):
+    Vg2[i] = v*-1
+
 # Setting up plot
-title = "Collector Current as a function of gate voltage for an nMOS transistor"
+title = "Collector Current as a function of gate voltage"
 yLabel = "Collector Current (A)"
 xLabel = "Gate Voltage (V)"
 
 # Plotting Data
 
-Data1 = plt.semilogy(Vg, Cc, 'ro', markersize=3, label="experimental")
-Data2 = plt.semilogy(Vg[10:], TheoCC[10:], 'b--', markersize=3, label="EKV Model")
-
+Data1 = plt.semilogy(Vg, Cc, 'ro', markersize=3, label="experimental nMOS data")
+Data2 = plt.semilogy(Vg[10:], TheoCC[10:], 'b--', markersize=3, label="EKV Model for nMOS")
+Data1 = plt.semilogy(Vg2, Cc2, 'go', markersize=3, label="experimental pMOS data")
+Data2 = plt.semilogy(Vg2[5:50], TheoCC2[5:50], 'k--', markersize=3, label="EKV Model for pMOS")
 
 
 

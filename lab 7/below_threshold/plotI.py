@@ -122,6 +122,10 @@ slope4 = gmn4[round(len(gmn4)/2)]
 
 slope5 = gmn5[round(len(gmn5)/2)]
 
+print(slope3)
+print(slope4)
+print(slope5)
+
 for xx in Vdm4:
     line3.append(xx*slope3)
     line4.append(xx*slope4)
@@ -134,26 +138,28 @@ if __name__ == "__main__":
     xLabel = "Voltage Differnce Vdm (V)"
 
 
-    Data2 = plt.plot(Vdm4, I1V4, 'ko', markersize=3, label="I1, V2 = 4")
-    Data3 = plt.plot(Vdm5, I1V5, 'bo', markersize=3, label="I1, V2 = 5")
-    Data1 = plt.plot(Vdm4, I1V3, 'ro', markersize=3, label="I1, V2 = 3")
+    Data1 = plt.plot(Vdm4, I1V3, 'ro', markersize=3, label="I1, V2 = 3V")
+    Data2 = plt.plot(Vdm4, I1V4, 'ko', markersize=3, label="I1, V2 = 4V")
+    Data3 = plt.plot(Vdm5, I1V5, 'bo', markersize=3, label="I1, V2 = 5V")
 
-    Data4 = plt.plot(Vdm3, I2V3, 'r*', markersize=3, label="I2, V2 = 3")
-    Data5 = plt.plot(Vdm4, I2V4, 'k*', markersize=3, label="I2, V2 = 4")
-    Data6 = plt.plot(Vdm5, I2V5, 'b*', markersize=3, label="I2, V2 = 5")
 
-    Data7 = plt.plot(Vdm3, Sum3, 'r--', markersize=3, label="I1 - I2, V2 = 3")
-    Data8 = plt.plot(Vdm4, Sum4, 'k--', markersize=3, label="I1 - I2, V2 = 4")
-    Data9 = plt.plot(Vdm5, Sum5, 'b--', markersize=3, label="I1 - I2, V2 = 5")
 
-    Data7 = plt.plot(Vdm3, Diff3, 'r^', markersize=3, label="I1 + I2, V2 = 3")
-    Data8 = plt.plot(Vdm4, Diff4, 'k^', markersize=3, label="I1 + I2, V2 = 4")
-    Data9 = plt.plot(Vdm5, Diff5, 'b^', markersize=3, label="I1 + I2, V2 = 5")
+    Data4 = plt.plot(Vdm3, I2V3, 'r*', markersize=3, label="I2, V2 = 3V")
+    Data5 = plt.plot(Vdm4, I2V4, 'k*', markersize=3, label="I2, V2 = 4V")
+    Data6 = plt.plot(Vdm5, I2V5, 'b*', markersize=3, label="I2, V2 = 5V")
+
+    Data7 = plt.plot(Vdm3, Sum3, 'r--', markersize=3, label="I1 - I2, V2 = 3V")
+    Data8 = plt.plot(Vdm4, Sum4, 'k--', markersize=3, label="I1 - I2, V2 = 4V")
+    Data9 = plt.plot(Vdm5, Sum5, 'b--', markersize=3, label="I1 - I2, V2 = 5V")
+
+    Data7 = plt.plot(Vdm3, Diff3, 'r^', markersize=3, label="I1 + I2, V2 = 3V")
+    Data8 = plt.plot(Vdm4, Diff4, 'k^', markersize=3, label="I1 + I2, V2 = 4V")
+    Data9 = plt.plot(Vdm5, Diff5, 'b^', markersize=3, label="I1 + I2, V2 = 5V")
 
     mOffset = 18;
-    Date10 = plt.plot(Vdm4[mOffset:len(line3)-mOffset], line3[mOffset:len(line3)-mOffset], 'co',  markersize=3, label="slope = Gdm, V2=3")
-    Date11 = plt.plot(Vdm4[mOffset:len(line3)-mOffset], line4[mOffset:len(line4)-mOffset], 'go',  markersize=3, label="slope = Gdm, V2=4")
-    Date12 = plt.plot(Vdm4[mOffset:len(line3)-mOffset], line5[mOffset:len(line5)-mOffset], 'mo',  markersize=3, label="slope = Gdm, V2=5")
+    Date10 = plt.plot(Vdm4[mOffset:len(line3)-mOffset], line3[mOffset:len(line3)-mOffset], 'c',  markersize=3, label="slope = Gdm, V2=3V")
+    Date11 = plt.plot(Vdm4[mOffset:len(line3)-mOffset], line4[mOffset:len(line4)-mOffset], 'g',  markersize=3, label="slope = Gdm, V2=4V")
+    Date12 = plt.plot(Vdm4[mOffset:len(line3)-mOffset], line5[mOffset:len(line5)-mOffset], 'm',  markersize=3, label="slope = Gdm, V2=5V")
 
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)
