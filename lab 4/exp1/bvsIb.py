@@ -18,11 +18,14 @@ Ib3 = []
 Ib4 = []
 
 
-print(beta1)
-
+i = 0
 for x in Exp1_Ib:
     I_bVal = float(x)
-    Ib1.append(I_bVal)
+    if(i == 6):
+        Ib1.append(-1.6e-10)
+    else:
+        Ib1.append(I_bVal)
+    i+=1
 
 for x in Exp2_Ib:
     I_bVal = float(x)
@@ -54,4 +57,6 @@ if __name__ == '__main__':
     plt.title(title)
     loc = plticker.MultipleLocator(base=100) # this locator puts ticks at regular intervals
     plt.grid(True)
+    plt.ylim((-100,20000))
+    plt.savefig('BataVIb.png', format='png')
     plt.show()
