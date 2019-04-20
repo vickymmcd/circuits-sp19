@@ -6,9 +6,9 @@ from scipy import stats
 from numpy import *
 
 # Importing Data
-Iout = open('vdm=0/Iout.txt', 'r').read().split() # Iout
+Iout = open('vdm=0x2/Iout.txt', 'r').read().split() # Iout
 
-Vout = open('vdm=0/Vout.txt', 'r').read().split() # Vout
+Vout = open('vdm=0x2/Vout.txt', 'r').read().split() # Vout
 
 lineariout = []
 linearvout = []
@@ -16,7 +16,7 @@ linearvout = []
 for i, x in enumerate(Iout):
     Iout[i] = float(Iout[i])*1e6
     Vout[i] = float(Vout[i])
-    if Vout[i] > 2.4 and Vout[i] < 4.9:
+    if Vout[i] > 1.16 and Vout[i] < 4.9:
         lineariout.append(Iout[i])
         linearvout.append(Vout[i])
 
@@ -24,6 +24,7 @@ slope, intercept, r_value, p_value, std_err = stats.linregress(linearvout, linea
 linearvout = np.array(linearvout)
 
 resistance = slope / 1000000
+print(1/slope)
 resistance = 1/resistance
 print(resistance)
 

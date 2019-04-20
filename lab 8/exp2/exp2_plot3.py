@@ -6,9 +6,9 @@ from scipy import stats
 from numpy import *
 
 # Importing Data
-Iout = open('finally/Iout.txt', 'r').read().split() # Iout
+Iout = open('finallyx3/Iout.txt', 'r').read().split() # Iout
 
-Vdm = open('finally/Vdm.txt', 'r').read().split() # Vdm
+Vdm = open('finallyx3/Vdm.txt', 'r').read().split() # Vdm
 
 lineariout = []
 linearvdm = []
@@ -16,7 +16,7 @@ linearvdm = []
 for i, x in enumerate(Iout):
     Iout[i] = -1*float(Iout[i])*1e6
     Vdm[i] = float(Vdm[i])
-    if Vdm[i] > -.05 and Vdm[i] < .05:
+    if Vdm[i] > -.045 and Vdm[i] < .03:
         lineariout.append(Iout[i])
         linearvdm.append(Vdm[i])
 
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     yLabel = "Iout (micro amps)"
     xLabel = "Vdm (V)"
 
-    Data1 = plt.plot(Vdm, Iout, 'ro', markersize=3, label="Vout=3.5V")
+    Data1 = plt.plot(Vdm, Iout, 'ro', markersize=3, label="Vout=3.35V")
     Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))
 
     plt.xlabel(xLabel)

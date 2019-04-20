@@ -6,9 +6,9 @@ from scipy import stats
 from numpy import *
 
 # Importing Data
-Vdm = open('high-gain/Vdm.txt', 'r').read().split() # Vdm
+Vdm = open('high-gainx2/Vdm.txt', 'r').read().split() # Vdm
 
-Vout = open('high-gain/Vout.txt', 'r').read().split() # Vout
+Vout = open('high-gainx2/Vout.txt', 'r').read().split() # Vout
 
 linearvdm = []
 linearvout = []
@@ -16,7 +16,7 @@ linearvout = []
 for i, x in enumerate(Vdm):
     Vdm[i] = float(Vdm[i])
     Vout[i] = float(Vout[i])
-    if Vdm[i] > -.0135 and Vdm[i] < -.0055:
+    if Vdm[i] > -.0135 and Vdm[i] < -.0001:
         linearvdm.append(Vdm[i])
         linearvout.append(Vout[i])
 
