@@ -67,6 +67,8 @@ if __name__ == '__main__':
 
 
     plt.legend()
+    plt.ylim(10e-8, 10e-2)
+    plt.savefig('Exp3_Sink.png', format='png')
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)
     plt.title(title)
