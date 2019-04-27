@@ -23,20 +23,24 @@ with open('RunforShortWaveLab9.csv', 'r') as csvfile:
             # print(firstval,"ee", secondval, thirdval)
             timeSmall.append(firstval)
             VoutSmall.append(thirdval)
-#
-# slope, intercept, r_value, p_value, std_err = stats.linregress(linearvdm, linearvout)
-# linearvdm = np.array(linearvdm)
 
-# #
-# print(VoutBig[0])
-# print(timeBig)
-# Setting up plot
+
+timeStartDecend = -0.0243353
+timeEndDecend = -0.0238842
+slewDownRate = timeStartDecend- timeEndDecend
+print("Down Const: " , slewDownRate)
+
+timeStartAccend = -0.0233369
+timeEndAccend = -0.0226176
+slewUpRate = timeStartAccend- timeEndAccend
+print("Up Const: " , slewUpRate)
+
 title = "Unity-Gain Follower Step Response"
 yLabel = "Vout"
 xLabel = "time"
 #
 peaktopeak = max(VoutSmall)-min(VoutSmall)
-print(peaktopeak)
+print("Peak to Peak Amp: ", peaktopeak)
 
 Data1 = plt.plot(timeSmall[0:500], VoutSmall[0:500], 'ro', markersize=3)
 # Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))

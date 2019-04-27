@@ -20,7 +20,6 @@ with open('RunforLargeWaveLab9.csv', 'r') as csvfile:
             firstval = float(row[0])
             secondval = float(row[1])
             thirdval = float(row[2])
-            # print(firstval,"ee", secondval, thirdval)
             timeBig.append(firstval)
             VoutBig.append(thirdval)
 
@@ -28,11 +27,35 @@ with open('RunforLargeWaveLab9.csv', 'r') as csvfile:
 peaktopeak = max(VoutBig)-min(VoutBig)
 print(peaktopeak)
 
+VoutBigSub1 = VoutBig[0:1500]
+max = 0
+maxIn = 0
+i = 0
+timeStartDecend = 0
+timeEndDecend = 0
+
+for x in VoutBigSub1:
+    if(x > max):
+        max = x
+        maxin = i
+    i+=1
+
+timeStartDecend = -0.0243465
+timeEndDecend = -0.018695
+slewDownRate = timeStartDecend- timeEndDecend
+print(slewDownRate)
+
+timeStartAccend = -0.0143897
+timeEndAccend = -0.000624492
+slewUpRate = timeStartAccend- timeEndAccend
+print(slewUpRate)
+
 title = "Unity-Gain Follower Step Response"
 yLabel = "Vout"
 xLabel = "time"
-#
-Data1 = plt.plot(timeBig, VoutBig, 'ro', markersize=3)
+
+
+Data1 = plt.plot(timeBig[1500:3000], VoutBig[1500:3000], 'ro', markersize=3)
 # Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))
 
 plt.xlabel(xLabel)
