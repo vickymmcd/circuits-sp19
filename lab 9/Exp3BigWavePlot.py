@@ -23,14 +23,11 @@ with open('RunforLargeWaveLab9.csv', 'r') as csvfile:
             # print(firstval,"ee", secondval, thirdval)
             timeBig.append(firstval)
             VoutBig.append(thirdval)
-#
-# slope, intercept, r_value, p_value, std_err = stats.linregress(linearvdm, linearvout)
-# linearvdm = np.array(linearvdm)
 
-# #
-# print(VoutBig[0])
-# print(timeBig)
-# Setting up plot
+
+peaktopeak = max(VoutBig)-min(VoutBig)
+print(peaktopeak)
+
 title = "Unity-Gain Follower Step Response"
 yLabel = "Vout"
 xLabel = "time"
