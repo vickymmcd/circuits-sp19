@@ -12,6 +12,8 @@ timeBig = []
 
 VoutBig = []
 
+stepBig = []
+
 with open('RunforLargeWaveLab9.csv', 'r') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
@@ -22,6 +24,7 @@ with open('RunforLargeWaveLab9.csv', 'r') as csvfile:
             thirdval = float(row[2])
             timeBig.append(firstval)
             VoutBig.append(thirdval)
+            stepBig.append(secondval)
 
 
 peaktopeak = max(VoutBig)-min(VoutBig)
@@ -51,11 +54,12 @@ slewUpRate = timeStartAccend- timeEndAccend
 print(slewUpRate)
 
 title = "Unity-Gain Follower Step Response"
-yLabel = "Vout"
-xLabel = "time"
+yLabel = "Vout (Volts)"
+xLabel = "time (seconds)"
 
 
-Data1 = plt.plot(timeBig[1500:3000], VoutBig[1500:3000], 'ro', markersize=3)
+Data1 = plt.plot(timeBig, VoutBig, 'ro', markersize=3)
+Data2 = plt.plot(timeBig, stepBig, 'bo', markersize=3)
 # Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))
 
 plt.xlabel(xLabel)
