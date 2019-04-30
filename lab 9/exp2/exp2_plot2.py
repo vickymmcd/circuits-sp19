@@ -16,7 +16,7 @@ linearvout = []
 for i, x in enumerate(Iout):
     Iout[i] = float(Iout[i])*1e6
     Vout[i] = float(Vout[i])
-    if Vout[i] > .78:
+    if Vout[i] < 4.8 and Vout[i] > 0.2:
         lineariout.append(Iout[i])
         linearvout.append(Vout[i])
 
