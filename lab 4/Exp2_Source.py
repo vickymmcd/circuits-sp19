@@ -73,12 +73,12 @@ xLabel = "Iy (A)"
 
 # Plotting Data
 
-Data1 = plt.loglog(I_z1, I_y1, 'ro', markersize=3, label="Ix = 1e^-6")
-Data2 = plt.loglog(Theo_Z1, I_y1, 'r--', markersize=3, label="Iz = 1e^-6 *Ix")
-Data3 = plt.loglog(I_z2, I_y2, 'go', markersize=3, label="Ix = 1e^-5")
-Data4 = plt.loglog(Theo_Z2, I_y2, 'g--', markersize=3, label="Iz = 1e^-5 *Ix")
-Data5 = plt.loglog(I_z3, I_y3, 'bo', markersize=3, label="Ix = 1e^-4")
-Data6 = plt.loglog(Theo_Z3, I_y3, 'b--', markersize=3, label="Iz = 1e^-4 *Ix")
+Data1 = plt.loglog(I_y1, I_z1, 'ro', markersize=3, label="Ix = 1e^-6")
+Data2 = plt.loglog(I_y1, Theo_Z1, 'r--', markersize=3, label="Iz = 1e^-6 *Ix")
+Data3 = plt.loglog(I_y2, I_z2,'go', markersize=3, label="Ix = 1e^-5")
+Data4 = plt.loglog(I_y2, Theo_Z2, 'g--', markersize=3, label="Iz = 1e^-5 *Ix")
+Data5 = plt.loglog(I_y3, I_z3, 'bo', markersize=3, label="Ix = 1e^-4")
+Data6 = plt.loglog(I_y3, Theo_Z3,'b--', markersize=3, label="Iz = 1e^-4 *Ix")
 
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)

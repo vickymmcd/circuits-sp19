@@ -102,23 +102,28 @@ for x in Cc:
     TheoCC.append(val/1e5)
     i+=1
 
+Vg2 = Vg
+Cc2 = Cc
+TheoCC2 = TheoCC
 
-# Setting up plot
-title = "Collector Current as a function of gate voltage for an pMOS transistor"
-yLabel = "Collector Current (A)"
-xLabel = "Gate Voltage (V)"
+if __name__ == '__main__':
 
-# Plotting Data
+    # Setting up plot
+    title = "Collector Current as a function of gate voltage for an pMOS transistor"
+    yLabel = "Collector Current (A)"
+    xLabel = "Gate Voltage (V)"
 
-Data1 = plt.semilogy(Vg, Cc, 'ro', markersize=3, label="experimental")
-Data2 = plt.semilogy(Vg[5:50], TheoCC[5:50], 'b--', markersize=3, label="EKV Model")
+    # Plotting Data
 
-plt.xlabel(xLabel)
-plt.ylabel(yLabel)
-plt.title(title)
-plt.legend()
-plt.savefig('Exp1pMOS.png', format='png')
-plt.show()
+    Data1 = plt.semilogy(Vg, Cc, 'ro', markersize=3, label="experimental")
+    Data2 = plt.semilogy(Vg[5:50], TheoCC[5:50], 'b--', markersize=3, label="EKV Model")
+
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
+    plt.title(title)
+    plt.legend()
+    plt.savefig('Exp1pMOS.png', format='png')
+    plt.show()
 
 
 

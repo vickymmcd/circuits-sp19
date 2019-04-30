@@ -92,7 +92,7 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     if min(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
         raise ValueError('identified a candidate weak-inversion region, but all current levels exceed typical weak-inversion currents')
     if max(abs(array(Isat[WIfirst : WIlast + 1]))) > 1e-6:
-        print 'ValueWarning: identified a candidate weak-inversion region, but some current levels exceed typical weak-inversion currents'
+        print('ValueWarning: identified a candidate weak-inversion region, but some current levels exceed typical weak-inversion currents')
 #        warnings.warn('ValueWarning', 'identified a candidate weak-inversion region, but some current levels exceed typical weak-inversion currents')
 
     [SIfirst, SIlast, SIm, SIb, SIN] = linefit(Vg, sqrt(Isat), epsilon)
@@ -110,7 +110,7 @@ def ekvfit(Vg, Isat, epsilon = 0.001, **kwargs):
     if max(abs(array(Isat[SIfirst : SIlast + 1]))) < 0.1e-6:
         raise ValueError('identified a candidate strong-inversion region, but all current levels are lower than typical strong-inversion currents')
     if min(abs(array(Isat[SIfirst : SIlast + 1]))) < 0.1e-6:
-        print 'ValueWarning: identified a candidate strong-inversion region, but some current levels are lower than typical strong-inversion currents'
+        print('ValueWarning: identified a candidate strong-inversion region, but some current levels are lower than typical strong-inversion currents')
 #        warnings.warn('ValueWarning', 'identified a candidate strong-inversion region, but some current levels are lower than typical strong-inversion currents')
 
     if SIfirst > WIlast:

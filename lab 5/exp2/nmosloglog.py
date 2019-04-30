@@ -7,6 +7,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy import stats
+from pmosloglog import pI2,ge2,gss2,gsw2
 pIout = open('nmosexp2/Iout.txt', 'r').read().split()
 pVin = open('nmosexp2/Vin.txt', 'r').read().split()
 pI=[]
@@ -50,16 +51,21 @@ for i in pI[6:]:
     gsw.append(i/.0258)
     gwp.append(va/(.0258*ro))
 
-title = "Current as a function of the Source Voltage in nMOS"
+title = "Plot of Incremental Source Conductance"
 yLabel = "I_sat(amps)"
 xLabel = "Incremental Source Conductance (gs) (mhos)"
 
 [first, last, mmax, bmax, Nmax]=linefit(np.array(pV[6:]),np.array(pI[6:]))
 x = np.logspace(.25,.55,2)
 y = mmax*x+bmax
-Data2=plt.loglog( pI[1:],ge, 'bo',label='Experimental')
-Data2=plt.loglog( pI[6:],gss, '-m',label='Strong Inversion Region Fit')
-Data2=plt.loglog( pI[6:],gsw, '-r',label='Weak Inversion Region Fit')
+Data2=plt.loglog( pI[1:],ge, 'bo',label='Experimental nMOS')
+Data2=plt.loglog( pI[6:],gss, '-m',label='Strong Inversion Region Fit for nMOS')
+Data2=plt.loglog( pI[6:],gsw, '-r',label='Weak Inversion Region Fit for nMOS')
+
+Data2=plt.loglog( pI2[1:],ge2, 'co',label='Experimental pMOS')
+Data2=plt.loglog( pI2[6:],gss2, '-g',label='Strong Inversion Region Fit for pMOS')
+Data2=plt.loglog( pI2[6:],gsw2, '-k',label='Weak Inversion Region Fit for pMOS')
+
 #Data2=plt.loglog(gsp, pI[6:], 'go')
 #Data2=plt.loglog(gwp, pI[6:], 'mo')
 plt.xlabel(xLabel)
