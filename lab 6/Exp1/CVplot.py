@@ -93,11 +93,11 @@ Data1 = plt.semilogy(Vg1, Id1, 'ro', markersize=3.5, label="T1")
 Data2 = plt.semilogy(Vg2, Id2, 'ko', markersize=3, label="T2")
 Data3 = plt.semilogy(Vg3, Id3, 'co', markersize=2.5, label="T3")
 Data4 = plt.semilogy(Vg4, Id4, 'bo', markersize=2, label="T4")
-
-Data5 = plt.semilogy(Vg1[10:], TheoI1[10:], 'r--', markersize=3.5, label="T1 Fit")
-Data6 = plt.semilogy(Vg2[10:], TheoI2[10:], 'k--', markersize=3, label="T2 Fit")
-Data7 = plt.semilogy(Vg3[10:], TheoI3[10:], 'c--', markersize=2.5, label="T3 Fit")
-Data8= plt.semilogy(Vg4[10:], TheoI4[10:], 'b--', markersize=2, label="T4 Fit")
+start = 4
+Data5 = plt.semilogy(Vg1[start:], TheoI1[start:], 'r--', markersize=3.5, label="T1 Fit")
+Data6 = plt.semilogy(Vg2[start:], TheoI2[start:], 'k--', markersize=3, label="T2 Fit")
+Data7 = plt.semilogy(Vg3[start:], TheoI3[start:], 'c--', markersize=2.5, label="T3 Fit")
+Data8= plt.semilogy(Vg4[start:], TheoI4[start:], 'b--', markersize=2, label="T4 Fit")
 
 plt.xlabel(xLabel)
 plt.ylabel(yLabel)
