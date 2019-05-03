@@ -126,6 +126,9 @@ print(slope3)
 print(slope4)
 print(slope5)
 
+print("Sum three", Sum3)
+print("Sum four", Sum4)
+
 for xx in Vdm4:
     line3.append(xx*slope3)
     line4.append(xx*slope4)
@@ -134,7 +137,7 @@ for xx in Vdm4:
 if __name__ == "__main__":
     # Setting up plot
     title = "Current as a function of Vdm Below Threshold"
-    yLabel = "Current (I)"
+    yLabel = "Current (A)"
     xLabel = "Voltage Differnce Vdm (V)"
 
 

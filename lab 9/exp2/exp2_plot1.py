@@ -32,7 +32,7 @@ if __name__ == "__main__":
     xLabel = "Voltage Differnce Vdm (V)"
 
     Data1 = plt.plot(Vdm, Vout, 'ro', markersize=3, label="V2 = 3V")
-    Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)))
+    Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,5))+"x + " +str(round(intercept,5)) + "(V)")
 
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)

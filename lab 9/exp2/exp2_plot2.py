@@ -33,7 +33,7 @@ if __name__ == "__main__":
     xLabel = "Vout (V)"
 
     Data1 = plt.plot(Vout, Iout, 'ro', markersize=3)
-    Data = plt.plot(linearvout, (slope*linearvout)+intercept, 'b', label="best fit line: y="+str(round(slope,6))+"x + " +str(round(intercept,6)))
+    Data = plt.plot(linearvout, (slope*linearvout)+intercept, 'b', label="best fit line: y="+str(round(slope,6))+"x (V/A) + " +str(round(intercept,6))+ "(A)")
 
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)

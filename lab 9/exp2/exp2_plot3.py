@@ -37,7 +37,7 @@ if __name__ == "__main__":
     xLabel = "Vdm (V)"
 
     Data1 = plt.plot(Vdm, Iout, 'ro', markersize=3, label="Vout=3V")
-    Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,6))+"x + " +str(round(intercept,6)))
+    Data = plt.plot(linearvdm, (slope*linearvdm)+intercept, 'b', label="best fit line: y="+str(round(slope,6))+"x (V/A) + " +str(round(intercept,6)) + "(A)")
 
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)

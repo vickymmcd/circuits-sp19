@@ -52,7 +52,7 @@ for xx in Vdm4:
 if __name__ == "__main__":
     # Setting up plot
     title = "Current as a function of Vdm Above Threshold"
-    yLabel = "Current (I)"
+    yLabel = "Current (A)"
     xLabel = "Voltage Differnce Vdm (V)"
 
 
