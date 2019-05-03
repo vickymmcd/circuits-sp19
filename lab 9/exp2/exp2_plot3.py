@@ -17,7 +17,7 @@ linearvdm = []
 for i, x in enumerate(Iout):
     Iout[i] = -1*float(Iout[i])*1e6
     Vdm[i] = float(Vdm[i])
-    if Vdm[i] > .007 and Vdm[i] < .017:
+    if Vdm[i] > -.11 and Vdm[i] < .12:
         lineariout.append(Iout[i])
         linearvdm.append(Vdm[i])
 
