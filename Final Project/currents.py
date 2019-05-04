@@ -51,12 +51,14 @@ for i, v in enumerate(vgs):
         i42.append(i4[i])
         i52.append(i5[i])
 
-for val in i52:
+for i, val in enumerate(i52):
+    print(val/i1[1])
     i1_theo.append(16*val)
     i2_theo.append(8*val)
     i3_theo.append(4*val)
     i4_theo.append(2*val)
 
+#print(i1_theo)
 
 if __name__ == '__main__':
     title = "Plot of Current Vs Gate Voltage in Ladder Network"
@@ -64,15 +66,15 @@ if __name__ == '__main__':
     yLabel = "I (A)"
 
     Data = plt.plot(vgs2, i12, 'bo', markersize=3, label="I1")
-    Data = plt.plot(vgs2, i22, 'ro', markersize=3, label="I2")
-    Data = plt.plot(vgs2, i32, 'go', markersize=3, label="I3")
-    Data = plt.plot(vgs2, i42, 'ko', markersize=3, label="I4")
-    Data = plt.plot(vgs2, i52, 'co', markersize=3, label="I5")
+    # Data = plt.plot(vgs2, i22, 'ro', markersize=3, label="I2")
+    # Data = plt.plot(vgs2, i32, 'go', markersize=3, label="I3")
+    # Data = plt.plot(vgs2, i42, 'ko', markersize=3, label="I4")
+    # Data = plt.plot(vgs2, i52, 'co', markersize=3, label="I5")
 
     Data = plt.plot(vgs2, i1_theo, 'r*', markersize=3, label="I1 theoretical")
-    Data = plt.plot(vgs2, i2_theo, 'g*', markersize=3, label="I2 theoretical")
-    Data = plt.plot(vgs2, i3_theo, 'k*', markersize=3, label="I3 theoretical")
-    Data = plt.plot(vgs2, i4_theo, 'c*', markersize=3, label="I4 theoretical")
+    # Data = plt.plot(vgs2, i2_theo, 'g*', markersize=3, label="I2 theoretical")
+    # Data = plt.plot(vgs2, i3_theo, 'k*', markersize=3, label="I3 theoretical")
+    # Data = plt.plot(vgs2, i4_theo, 'c*', markersize=3, label="I4 theoretical")
 
 
     plt.legend()
