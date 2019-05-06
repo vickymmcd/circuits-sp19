@@ -71,7 +71,7 @@ for x in Id1:
 # Setting up plot
 title = "Percent Difference and Mean Value of Collector Current"
 yLabel = "Channel Current Percent Difference (%Diff of A)"
-xLabel = "Channel Current (A)"
+xLabel = "Mean Channel Current (A)"
 
 # Data1 = plt.semilogx(MeanVal, MeanVal, 'ro', markersize=3, label="Mean Current Value")
 Data2 = plt.semilogx(MeanVal, diff1, 'ko', markersize=3, label="T1 Percent Difference")
